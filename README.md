@@ -5,6 +5,7 @@ Landing page, contact page and waitlist for getsimpleman.com, served by a Cloudf
 - `public/` – static pages and images
 - `worker/index.js` – waitlist API (`POST /api/waitlist`) and the password-protected dataroom (`/dataroom`)
 - `worker/schema.sql` – D1 table for waitlist submissions
+- `designs/` – the original page designs (Desktop 22 = waitlist, 31 = landing, 34 = contact; 29 and 32 are earlier versions). `designs/first-local-version/` is the first static copy, kept locally only
 
 ## Dataroom
 
