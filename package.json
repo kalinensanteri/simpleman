@@ -1,0 +1,13 @@
+{
+  "name": "simpleman",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:init:local": "wrangler d1 execute simpleman-waitlist --local --file worker/schema.sql",
+    "db:init:remote": "wrangler d1 execute simpleman-waitlist --remote --file worker/schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^4.165.0"
+  }
+}

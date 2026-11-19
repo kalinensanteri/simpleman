@@ -1,0 +1,24 @@
+name = "simpleman"
+main = "worker/index.js"
+compatibility_date = "2025-01-01"
+
+# Serve on getsimpleman.com (Cloudflare creates the DNS records)
+routes = [
+  { pattern = "getsimpleman.com", custom_domain = true },
+  { pattern = "www.getsimpleman.com", custom_domain = true },
+]
+
+# Static site (index, contact, waitlist, images)
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# Waitlist submissions (schema: worker/schema.sql)
+[[d1_databases]]
+binding = "DB"
+database_name = "simpleman-waitlist"
+database_id = "bd466381-0bcc-48a0-9e99-05e3db14b234"
+
+# Secret (not in this file): DATAROOM_PASSWORD
+#   set with: npx wrangler secret put DATAROOM_PASSWORD
+#   locally:  .dev.vars

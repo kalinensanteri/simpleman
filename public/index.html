@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simpleman</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; overflow-x: hidden; }
+  body { font-family: 'Times New Roman', Times, serif; color: #111; }
+
+  /* 1440px artboard (measured from "Desktop - 31.png"), scaled to the viewport width */
+  .page { position: relative; width: 1440px; height: 2099px; transform-origin: 0 0; }
+  .abs { position: absolute; display: block; }
+
+  .logo { left: 39px; top: 49px; width: 89px; }
+  .hero { left: 0; top: 104px; width: 1440px; height: 416px; object-fit: cover; }
+
+  .mission {
+    left: 0; top: 647px; width: 1440px; text-align: center;
+    font-size: 22px; line-height: 24px;
+  }
+  .mission span { display: inline-block; }
+
+  .waitlist {
+    left: 580px; top: 790px; width: 279px; height: 34px;
+    border: 2px solid #d8d8d8; background: #fff;
+    font: 17px/30px 'Times New Roman', Times, serif; color: #111;
+    text-align: center; text-decoration: none; cursor: pointer;
+  }
+  .waitlist:hover { border-color: #a0a0a0; }
+
+  .tile { border: 2px solid #707070; object-fit: cover; }
+  .meal-a { left: 534px; top: 930px;  width: 160px; height: 160px; }
+  .meal-b { left: 744px; top: 930px;  width: 160px; height: 160px; }
+  .meal-c { left: 327px; top: 1108px; width: 160px; height: 160px; }
+  .meal-d { left: 534px; top: 1107px; width: 160px; height: 160px; }
+  .ingredients { left: 744px; top: 1109px; width: 368px; height: 223px; }
+
+  .flower { left: 370px; top: 984px; width: 62px; }
+  .globe  { left: 978px; top: 980px; width: 54px; }
+  .faces  { left: 872px; top: 1425px; width: 110px; }
+
+  .nutrition { left: 327px; top: 1286px; width: 367px; height: 222px; background: #e8e8e8; border: 2px solid #707070; }
+  .label { left: 54px; top: 37px; width: 253px; height: 144px; background: #fff; border: 2px solid #707070; }
+  .macros { left: 44px; top: 32px; font: 15px/18px 'Times New Roman', Times, serif; color: #000; }
+  .card { left: 119px; top: 28px; width: 84px; }
+
+  .strip { left: 346px; top: 1798px; width: 751px; height: 90px; border: 2px solid #707070; object-fit: cover; }
+
+  .footer-links { left: 0; top: 2018px; width: 1440px; text-align: center; font-size: 17px; line-height: 18px; }
+  .footer-links a { color: #111; text-decoration: none; margin: 0 11px; }
+  .footer-links a:hover { text-decoration: underline; }
+  .made { left: 0; top: 2052px; width: 1440px; text-align: center; font: 11px/12px 'Times New Roman', Times, serif; color: #999; }
+</style>
+</head>
+<body>
+<div class="page" id="page">
+  <img class="abs logo" src="img/logo.png" alt="Simpleman">
+  <img class="abs hero" src="img/hero-31.jpg" alt="Finnish forest lake">
+
+  <p class="abs mission"><span>Nutritious, minimally processed food should be available<br>wherever people put their minds and bodies on the line<br>at work.</span></p>
+
+  <a class="abs waitlist" href="waitlist.html">sign up for waitlist for early access</a>
+
+  <img class="abs flower" src="img/flower.png" alt="">
+  <img class="abs tile meal-a" src="img/meal3.jpg" alt="Beef bowl">
+  <img class="abs tile meal-b" src="img/meal4.jpg" alt="Beef bowl from above">
+  <img class="abs globe" src="img/globe.png" alt="">
+
+  <img class="abs tile meal-c" src="img/meal1.jpg" alt="Chicken bowl">
+  <img class="abs tile meal-d" src="img/meal2.jpg" alt="Chicken bowl from above">
+  <img class="abs tile ingredients" src="img/ingredients.jpg" alt="Raw ingredients">
+
+  <div class="abs nutrition">
+    <div class="abs label">
+      <div class="abs macros">750K<br>49P<br>65C<br>28F</div>
+      <img class="abs card" src="img/card.png" alt="Ingredients: sweet potatoes, carrots, beef, eggs, eggplant, broccoli, spices (salt, pepper)">
+    </div>
+  </div>
+  <img class="abs faces" src="img/faces.png" alt="">
+
+  <img class="abs strip" src="img/strip.jpg" alt="People at work and play">
+
+  <nav class="abs footer-links"><a href="contact.html">contact us</a><a href="#">manifesto</a></nav>
+  <p class="abs made">Made In Finland</p>
+</div>
+<script>
+  (function () {
+    var page = document.getElementById('page');
+    function fit() {
+      var s = document.documentElement.clientWidth / 1440;
+      page.style.transform = 'scale(' + s + ')';
+      document.body.style.height = (2099 * s) + 'px';
+    }
+    window.addEventListener('resize', fit);
+    fit();
+  })();
+</script>
+</body>
+</html>
