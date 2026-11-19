@@ -29,8 +29,8 @@
   .n1, .e1 { left: 390.5px; }
   .n2, .e2 { left: 711.5px; }
 
-  /* Phone layout (< 700px): the script zooms onto the content column (x 352–1032),
-     so these artboard sizes appear ~55% as large on a 375px-wide phone. */
+  /* Phone layout (< 700px): the script zooms onto the content column (x 340–1044),
+     so these artboard sizes appear ~53% as large on a 375px-wide phone. */
   .page.m { height: 680px; }
   .m .hat { left: 376px; top: 52px; width: 100px; }
   .m .name  { top: 554px; font-size: 26px; line-height: 26px; }
@@ -55,7 +55,7 @@
   (function () {
     var page = document.getElementById('page');
     // Desktop: show the whole 1440px artboard. Phone: zoom onto the content column.
-    var DESKTOP = { x: 0, w: 1440, h: 812 }, PHONE = { x: 352, w: 680, h: 680 };
+    var DESKTOP = { x: 0, w: 1440, h: 812 }, PHONE = { x: 340, w: 704, h: 680 };
     function fit() {
       var vw = document.documentElement.clientWidth;
       var phone = vw < 700, v = phone ? PHONE : DESKTOP, s = vw / v.w;
