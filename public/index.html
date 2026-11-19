@@ -17,6 +17,7 @@
 
   .logo { left: 39px; top: 49px; width: 89px; }
   .hero { left: 0; top: 104px; width: 1440px; height: 416px; object-fit: cover; }
+  .caption { left: 22px; top: 494px; font-size: 12px; line-height: 12px; color: #fff; white-space: nowrap; }
 
   .mission {
     left: 0; top: 647px; width: 1440px; text-align: center;
@@ -59,7 +60,11 @@
      sizes are in artboard pixels and appear ~42% as large on a 375px-wide phone. */
   .page.m { height: 1774px; }
   .m .logo { left: 327px; top: 40px; width: 130px; }
+  .m .caption { left: 293px; top: 472px; font-size: 24px; line-height: 24px; }
   .m .mission { font-size: 35px; line-height: 39px; }
+  /* Phone: narrower, balanced hero text instead of the desktop line breaks */
+  .m .mission span { width: 640px; text-wrap: balance; }
+  .m .mission br { display: none; }
   .m .waitlist { left: 469px; top: 800px; width: 502px; height: 62px; font-size: 30px; line-height: 58px; }
   .m .strip { top: 1558px; }
   .m .footer-links { top: 1660px; font-size: 32px; line-height: 34px; }
@@ -71,8 +76,9 @@
 <div class="page" id="page">
   <img class="abs logo" src="img/logo.png" alt="Simpleman">
   <img class="abs hero" src="img/hero-31.jpg" alt="Finnish forest lake">
+  <p class="abs caption">Kuhmo, Finland</p>
 
-  <p class="abs mission"><span>Wherever people put their minds and bodies on the line<br>at work, nutritious, minimally processed food should be<br>available.</span></p>
+  <p class="abs mission"><span>Wherever people put their minds and bodies on the line <br>at work, nutritious, minimally processed food should be <br>available.</span></p>
 
   <a class="abs waitlist" href="waitlist.html">sign up for waitlist to get early access</a>
 
