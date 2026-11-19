@@ -12,7 +12,7 @@
   body { font-family: 'Times New Roman', Times, serif; color: #111; }
 
   /* 1440px artboard (measured from "Desktop - 31.png"), scaled to the viewport width */
-  .page { position: relative; width: 1440px; height: 2088px; transform-origin: 0 0; }
+  .page { position: relative; width: 1440px; height: 1774px; transform-origin: 0 0; }
   .abs { position: absolute; display: block; }
 
   .logo { left: 39px; top: 49px; width: 89px; }
@@ -48,23 +48,23 @@
   .macros { left: 44px; top: 32px; font: 15px/18px 'Times New Roman', Times, serif; color: #000; }
   .card { left: 119px; top: 28px; width: 84px; }
 
-  .strip { left: 346px; top: 1798px; width: 751px; height: 90px; border: 2px solid #707070; object-fit: cover; }
+  .strip { left: 439px; top: 1568px; width: 563px; height: 66px; border: 2px solid #707070; object-fit: cover; }
 
-  .footer-links { left: 0; top: 2018px; width: 1440px; text-align: center; font-size: 17px; line-height: 18px; }
+  .footer-links { left: 0; top: 1704px; width: 1440px; text-align: center; font-size: 17px; line-height: 18px; }
   .footer-links a { color: #111; text-decoration: none; margin: 0 11px; }
   .footer-links a:hover { text-decoration: underline; }
-  .made { left: 0; top: 2052px; width: 1440px; text-align: center; font: 11px/12px 'Times New Roman', Times, serif; color: #999; }
+  .made { left: 0; top: 1738px; width: 1440px; text-align: center; font: 11px/12px 'Times New Roman', Times, serif; color: #999; }
 
   /* Phone layout (< 700px): the script zooms onto the content column (x 269–1169), so these
      sizes are in artboard pixels and appear ~42% as large on a 375px-wide phone. */
-  .page.m { height: 1848px; }
+  .page.m { height: 1774px; }
   .m .logo { left: 327px; top: 40px; width: 130px; }
   .m .mission { font-size: 35px; line-height: 39px; }
   .m .waitlist { left: 485px; top: 800px; width: 470px; height: 62px; font-size: 30px; line-height: 58px; }
-  .m .strip { top: 1606px; }
-  .m .footer-links { top: 1734px; font-size: 32px; line-height: 34px; }
+  .m .strip { top: 1558px; }
+  .m .footer-links { top: 1660px; font-size: 32px; line-height: 34px; }
   .m .footer-links a { margin: 0 18px; }
-  .m .made { top: 1790px; font-size: 20px; line-height: 22px; }
+  .m .made { top: 1716px; font-size: 20px; line-height: 22px; }
 </style>
 </head>
 <body>
@@ -102,7 +102,7 @@
   (function () {
     var page = document.getElementById('page');
     // Desktop: show the whole 1440px artboard. Phone: zoom onto the content column.
-    var DESKTOP = { x: 0, w: 1440, h: 2088 }, PHONE = { x: 269, w: 900, h: 1848 };
+    var DESKTOP = { x: 0, w: 1440, h: 1774 }, PHONE = { x: 269, w: 900, h: 1774 };
     function fit() {
       var vw = document.documentElement.clientWidth;
       var phone = vw < 700, v = phone ? PHONE : DESKTOP, s = vw / v.w;

@@ -17,24 +17,24 @@
 
   .hat { left: 59px; top: 52px; width: 70px; }
 
-  .intro { left: 389px; top: 185.5px; font-size: 27.5px; line-height: 34px; white-space: nowrap; }
+  .intro { left: 389px; top: 185.5px; font-size: 22px; line-height: 27px; white-space: nowrap; }
 
-  .person { width: 149px; height: 141px; }
-  .p1 { left: 390px; top: 399px; }
-  .p2 { left: 711px; top: 399px; }
+  .person { width: 119px; height: 113px; }
+  .p1 { left: 390px; top: 310px; }
+  .p2 { left: 609px; top: 310px; }
 
-  .name  { top: 554.5px; font-size: 16.5px; line-height: 16.5px; white-space: nowrap; }
-  .email { top: 573px; font-size: 17.5px; line-height: 17.5px; white-space: nowrap; color: #b8b8b8; text-decoration: none; }
+  .name  { top: 435px; font-size: 13.2px; line-height: 13.2px; white-space: nowrap; }
+  .email { top: 450px; font-size: 14px; line-height: 14px; white-space: nowrap; color: #b8b8b8; text-decoration: none; }
   .email:hover { color: #777; }
   .n1, .e1 { left: 390.5px; }
-  .n2, .e2 { left: 711.5px; }
+  .n2, .e2 { left: 609.5px; }
 
-  /* Phone layout (< 700px): the script zooms onto the content column (x 340–1044),
-     so these artboard sizes appear ~53% as large on a 375px-wide phone. */
-  .page.m { height: 680px; }
+  /* Phone layout (< 700px): the script zooms onto the content column (x 350–913),
+     so these artboard sizes appear ~67% as large on a 375px-wide phone. */
+  .page.m { height: 520px; }
   .m .hat { left: 376px; top: 52px; width: 100px; }
-  .m .name  { top: 554px; font-size: 26px; line-height: 26px; }
-  .m .email { top: 586px; font-size: 26px; line-height: 26px; }
+  .m .name  { top: 435px; font-size: 20px; line-height: 20px; }
+  .m .email { top: 459px; font-size: 20px; line-height: 20px; }
 </style>
 </head>
 <body>
@@ -55,7 +55,7 @@
   (function () {
     var page = document.getElementById('page');
     // Desktop: show the whole 1440px artboard. Phone: zoom onto the content column.
-    var DESKTOP = { x: 0, w: 1440, h: 812 }, PHONE = { x: 340, w: 704, h: 680 };
+    var DESKTOP = { x: 0, w: 1440, h: 812 }, PHONE = { x: 350, w: 563, h: 520 };
     function fit() {
       var vw = document.documentElement.clientWidth;
       var phone = vw < 700, v = phone ? PHONE : DESKTOP, s = vw / v.w;
