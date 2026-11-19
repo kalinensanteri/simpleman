@@ -26,6 +26,13 @@
   .email:hover { color: #777; }
   .n1, .e1 { left: 390.5px; }
   .n2, .e2 { left: 711.5px; }
+
+  /* Phone layout (< 700px): the script zooms onto the content column (x 352–1032),
+     so these artboard sizes appear ~55% as large on a 375px-wide phone. */
+  .page.m { height: 680px; }
+  .m .hat { left: 376px; top: 52px; width: 100px; }
+  .m .name  { top: 554px; font-size: 26px; line-height: 26px; }
+  .m .email { top: 586px; font-size: 26px; line-height: 26px; }
 </style>
 </head>
 <body>
@@ -45,10 +52,14 @@
 <script>
   (function () {
     var page = document.getElementById('page');
+    // Desktop: show the whole 1440px artboard. Phone: zoom onto the content column.
+    var DESKTOP = { x: 0, w: 1440, h: 812 }, PHONE = { x: 352, w: 680, h: 680 };
     function fit() {
-      var s = document.documentElement.clientWidth / 1440;
-      page.style.transform = 'scale(' + s + ')';
-      document.body.style.height = (812 * s) + 'px';
+      var vw = document.documentElement.clientWidth;
+      var phone = vw < 700, v = phone ? PHONE : DESKTOP, s = vw / v.w;
+      page.classList.toggle('m', phone);
+      page.style.transform = 'scale(' + s + ') translateX(' + (-v.x) + 'px)';
+      document.body.style.height = (v.h * s) + 'px';
     }
     window.addEventListener('resize', fit);
     fit();

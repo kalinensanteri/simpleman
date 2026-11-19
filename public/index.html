@@ -52,6 +52,17 @@
   .footer-links a { color: #111; text-decoration: none; margin: 0 11px; }
   .footer-links a:hover { text-decoration: underline; }
   .made { left: 0; top: 2052px; width: 1440px; text-align: center; font: 11px/12px 'Times New Roman', Times, serif; color: #999; }
+
+  /* Phone layout (< 700px): the script zooms onto the content column (x 290–1148), so these
+     sizes are in artboard pixels and appear ~44% as large on a 375px-wide phone. */
+  .page.m { height: 1860px; }
+  .m .logo { left: 327px; top: 40px; width: 130px; }
+  .m .mission { font-size: 34px; line-height: 38px; }
+  .m .waitlist { left: 500px; top: 790px; width: 440px; height: 60px; font-size: 28px; line-height: 56px; }
+  .m .strip { top: 1580px; }
+  .m .footer-links { top: 1736px; font-size: 30px; line-height: 32px; }
+  .m .footer-links a { margin: 0 18px; }
+  .m .made { top: 1790px; font-size: 20px; line-height: 22px; }
 </style>
 </head>
 <body>
@@ -88,10 +99,14 @@
 <script>
   (function () {
     var page = document.getElementById('page');
+    // Desktop: show the whole 1440px artboard. Phone: zoom onto the content column.
+    var DESKTOP = { x: 0, w: 1440, h: 2099 }, PHONE = { x: 290, w: 858, h: 1860 };
     function fit() {
-      var s = document.documentElement.clientWidth / 1440;
-      page.style.transform = 'scale(' + s + ')';
-      document.body.style.height = (2099 * s) + 'px';
+      var vw = document.documentElement.clientWidth;
+      var phone = vw < 700, v = phone ? PHONE : DESKTOP, s = vw / v.w;
+      page.classList.toggle('m', phone);
+      page.style.transform = 'scale(' + s + ') translateX(' + (-v.x) + 'px)';
+      document.body.style.height = (v.h * s) + 'px';
     }
     window.addEventListener('resize', fit);
     fit();
