@@ -2,6 +2,9 @@ name = "simpleman"
 main = "worker/index.js"
 compatibility_date = "2025-01-01"
 
+# Backup address: https://simpleman.kalinensanteri.workers.dev
+workers_dev = true
+
 # Serve on getsimpleman.com (Cloudflare creates the DNS records)
 routes = [
   { pattern = "getsimpleman.com", custom_domain = true },
