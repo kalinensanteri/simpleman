@@ -12,39 +12,39 @@
   body { font-family: 'Times New Roman', Times, serif; color: #111; }
 
   /* 1440px artboard (measured from "Desktop - 20.png"), scaled to the viewport width */
-  .page { position: relative; width: 1440px; height: 1967px; transform-origin: 0 0; }
+  .page { position: relative; width: 1440px; height: 1847px; transform-origin: 0 0; }
   .abs { position: absolute; display: block; }
 
   .hero { left: 0; top: 98px; width: 1440px; height: 426px; object-fit: cover; }
 
-  h1.abs { left: 405px; top: 706px; font-weight: normal; font-size: 62px; line-height: 62px; white-space: nowrap; }
+  h1.abs { left: 452px; top: 706px; font-weight: normal; font-size: 53px; line-height: 53px; white-space: nowrap; }
 
-  .quote { left: 405px; top: 795px; font-size: 23px; line-height: 26.5px; white-space: nowrap; }
-  .what  { left: 405px; top: 944px; font-size: 23px; line-height: 24.5px; white-space: nowrap; }
+  .quote { left: 452px; top: 782px; font-size: 19.5px; line-height: 22.5px; white-space: nowrap; }
+  .what  { left: 452px; top: 908px; font-size: 19.5px; line-height: 21px; white-space: nowrap; }
 
-  .item { left: 405px; font-size: 23px; line-height: 24.5px; white-space: nowrap; }
-  .item .num { display: inline-block; width: 54px; }
-  .i1 { top: 992px; }
-  .i2 { top: 1089px; }
-  .i3 { top: 1186px; }
+  .item { left: 452px; font-size: 19.5px; line-height: 21px; white-space: nowrap; }
+  .item .num { display: inline-block; width: 46px; }
+  .i1 { top: 949px; }
+  .i2 { top: 1032px; }
+  .i3 { top: 1114px; }
 
-  .stripbox { left: 304px; top: 1380px; width: 832px; height: 69px; overflow: hidden; }
+  .stripbox { left: 304px; top: 1280px; width: 832px; height: 69px; overflow: hidden; }
   .stripbox img { display: block; width: 100%; height: 100%; }
 
-  .future { left: 541px; top: 1569px; font-size: 16.5px; line-height: 18.5px; white-space: nowrap; }
+  .future { left: 541px; top: 1449px; font-size: 16.5px; line-height: 18.5px; white-space: nowrap; }
   .future .dash { display: inline-block; width: 50px; }
 
-  .drawing { left: 766px; top: 1677px; width: 280px; }
+  .drawing { left: 766px; top: 1557px; width: 280px; }
 
   /* Phone layout (< 700px): plain top-to-bottom page at real size (no artboard scaling). */
   .page.m { width: auto; height: auto; padding-bottom: 48px; }
   .m .abs { position: static; white-space: normal; }
   .m br.d { display: none; }
   .m .hero { width: 100%; height: auto; }
-  .m h1.abs { font-size: 30px; line-height: 34px; margin: 34px 26px 16px; }
-  .m .quote { font-size: 16px; line-height: 23px; margin: 0 26px 28px; }
-  .m .what  { font-size: 16px; line-height: 23px; margin: 0 26px 14px; }
-  .m .item  { font-size: 16px; line-height: 23px; margin: 0 26px 14px; }
+  .m h1.abs { font-size: 26px; line-height: 30px; margin: 34px 26px 16px; }
+  .m .quote { font-size: 15px; line-height: 21px; margin: 0 26px 28px; }
+  .m .what  { font-size: 15px; line-height: 21px; margin: 0 26px 14px; }
+  .m .item  { font-size: 15px; line-height: 21px; margin: 0 26px 14px; }
   .m .item .num { width: 22px; }
   .m .stripbox { width: auto; height: auto; margin: 40px 0 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .m .stripbox img { width: auto; height: 70px; max-width: none; }
@@ -90,7 +90,7 @@
       } else {
         var s = vw / 1440;
         page.style.transform = 'scale(' + s + ')';
-        document.body.style.height = (1967 * s) + 'px';
+        document.body.style.height = (1847 * s) + 'px';
       }
     }
     window.addEventListener('resize', fit);
