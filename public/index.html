@@ -7,10 +7,12 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: #fff; overflow-x: hidden; }
+  /* Clip the scaled artboard so phones cannot scroll past the end of the page */
+  body { overflow: hidden; }
   body { font-family: 'Times New Roman', Times, serif; color: #111; }
 
   /* 1440px artboard (measured from "Desktop - 31.png"), scaled to the viewport width */
-  .page { position: relative; width: 1440px; height: 2099px; transform-origin: 0 0; }
+  .page { position: relative; width: 1440px; height: 2088px; transform-origin: 0 0; }
   .abs { position: absolute; display: block; }
 
   .logo { left: 39px; top: 49px; width: 89px; }
@@ -55,7 +57,7 @@
 
   /* Phone layout (< 700px): the script zooms onto the content column (x 290–1148), so these
      sizes are in artboard pixels and appear ~44% as large on a 375px-wide phone. */
-  .page.m { height: 1860px; }
+  .page.m { height: 1848px; }
   .m .logo { left: 327px; top: 40px; width: 130px; }
   .m .mission { font-size: 34px; line-height: 38px; }
   .m .waitlist { left: 500px; top: 790px; width: 440px; height: 60px; font-size: 28px; line-height: 56px; }
@@ -100,7 +102,7 @@
   (function () {
     var page = document.getElementById('page');
     // Desktop: show the whole 1440px artboard. Phone: zoom onto the content column.
-    var DESKTOP = { x: 0, w: 1440, h: 2099 }, PHONE = { x: 290, w: 858, h: 1860 };
+    var DESKTOP = { x: 0, w: 1440, h: 2088 }, PHONE = { x: 290, w: 858, h: 1848 };
     function fit() {
       var vw = document.documentElement.clientWidth;
       var phone = vw < 700, v = phone ? PHONE : DESKTOP, s = vw / v.w;

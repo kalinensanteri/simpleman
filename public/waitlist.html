@@ -7,6 +7,8 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: #fff; overflow-x: hidden; }
+  /* Clip the scaled artboard so phones cannot scroll past the end of the page */
+  body { overflow: hidden; }
   body { font-family: 'Times New Roman', Times, serif; color: #111; }
 
   /* 1440px artboard (measured from "Desktop - 22.png"), scaled to the viewport width */
