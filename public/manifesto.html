@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simpleman · Manifesto</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; overflow-x: hidden; }
+  /* Clip the scaled artboard so phones cannot scroll past the end of the page */
+  body { overflow: hidden; }
+  body { font-family: 'Times New Roman', Times, serif; color: #111; }
+
+  /* 1440px artboard (measured from "Desktop - 20.png"), scaled to the viewport width */
+  .page { position: relative; width: 1440px; height: 1967px; transform-origin: 0 0; }
+  .abs { position: absolute; display: block; }
+
+  .hero { left: 0; top: 98px; width: 1440px; height: 426px; object-fit: cover; }
+
+  h1.abs { left: 405px; top: 706px; font-weight: normal; font-size: 62px; line-height: 62px; white-space: nowrap; }
+
+  .quote { left: 405px; top: 795px; font-size: 23px; line-height: 26.5px; white-space: nowrap; }
+  .what  { left: 405px; top: 944px; font-size: 23px; line-height: 24.5px; white-space: nowrap; }
+
+  .item { left: 405px; font-size: 23px; line-height: 24.5px; white-space: nowrap; }
+  .item .num { display: inline-block; width: 54px; }
+  .i1 { top: 992px; }
+  .i2 { top: 1089px; }
+  .i3 { top: 1186px; }
+
+  .stripbox { left: 304px; top: 1380px; width: 832px; height: 69px; overflow: hidden; }
+  .stripbox img { display: block; width: 100%; height: 100%; }
+
+  .future { left: 541px; top: 1569px; font-size: 16.5px; line-height: 18.5px; white-space: nowrap; }
+  .future .dash { display: inline-block; width: 50px; }
+
+  .drawing { left: 766px; top: 1677px; width: 280px; }
+
+  /* Phone layout (< 700px): plain top-to-bottom page at real size (no artboard scaling). */
+  .page.m { width: auto; height: auto; padding-bottom: 48px; }
+  .m .abs { position: static; white-space: normal; }
+  .m br.d { display: none; }
+  .m .hero { width: 100%; height: auto; }
+  .m h1.abs { font-size: 30px; line-height: 34px; margin: 34px 26px 16px; }
+  .m .quote { font-size: 16px; line-height: 23px; margin: 0 26px 28px; }
+  .m .what  { font-size: 16px; line-height: 23px; margin: 0 26px 14px; }
+  .m .item  { font-size: 16px; line-height: 23px; margin: 0 26px 14px; }
+  .m .item .num { width: 22px; }
+  .m .stripbox { width: auto; height: auto; margin: 40px 0 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .m .stripbox img { width: auto; height: 70px; max-width: none; }
+  .m .stripbox { scrollbar-width: none; }
+  .m .stripbox::-webkit-scrollbar { display: none; }
+  .m .future { font-size: 14px; line-height: 19px; margin: 34px 26px 0; }
+  .m .future .dash { width: 28px; }
+  .m .drawing { width: 50%; margin: 18px 0 0 34%; }
+</style>
+</head>
+<body>
+<div class="page" id="page">
+  <img class="abs hero" src="img/manifesto-hero.jpg" alt="manifesto">
+
+  <h1 class="abs">Pursuit of real</h1>
+
+  <p class="abs quote">“The word "real" primarily means existing in fact, genuine, or not<br class="d"> imaginary. It comes from the Latin word res, meaning "thing".</p>
+
+  <p class="abs what">What do we believe in?</p>
+
+  <p class="abs item i1"><span class="num">1.</span>Humans have always functioned as a pack. A pack wins<br class="d"> together when everybody puts effort towards a mutual goal. For a<br class="d"> pack to become strong it is necessary to face challenges together.</p>
+
+  <p class="abs item i2"><span class="num">2.</span>Inside a pack, everyone has their own specialties based on<br class="d"> what needs to be achieved, and no specialty is superior to one<br class="d"> another.</p>
+
+  <p class="abs item i3"><span class="num">3.</span>We become what we consume. The environment we spend our<br class="d"> time in, the food we eat, the social relationships we immerse<br class="d"> ourselves in.</p>
+
+  <div class="abs stripbox"><img src="img/manifesto-strip.jpg" alt="Photos of people and places"></div>
+
+  <p class="abs future">“...and at the time when the sun exploded and the last<br class="d"> starships left the earth, simpleman always stayed real,<br class="d"> was non-negotiable about the nutrition it brought and<br class="d"> always served genuine people doing important work.”<br><span class="dash">-</span>Someone, the future</p>
+
+  <img class="abs drawing" src="img/manifesto-drawing.png" alt="">
+</div>
+<script>
+  (function () {
+    var page = document.getElementById('page');
+    // Desktop: scale the 1440px artboard. Phone: plain flowing layout (see .m styles).
+    function fit() {
+      var vw = document.documentElement.clientWidth, phone = vw < 700;
+      page.classList.toggle('m', phone);
+      if (phone) {
+        page.style.transform = 'none';
+        document.body.style.height = 'auto';
+      } else {
+        var s = vw / 1440;
+        page.style.transform = 'scale(' + s + ')';
+        document.body.style.height = (1967 * s) + 'px';
+      }
+    }
+    window.addEventListener('resize', fit);
+    fit();
+  })();
+</script>
+</body>
+</html>
