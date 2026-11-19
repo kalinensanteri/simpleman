@@ -17,22 +17,24 @@
 
   .hat { left: 59px; top: 52px; width: 70px; }
 
-  .intro { left: 389px; top: 185.5px; font-size: 22px; line-height: 27px; white-space: nowrap; }
+  .intro { left: 478px; top: 266.5px; font-size: 22px; line-height: 27px; white-space: nowrap; }
 
   .person { width: 119px; height: 113px; }
-  .p1 { left: 390px; top: 310px; }
-  .p2 { left: 609px; top: 310px; }
+  .p1 { left: 479px; top: 391px; }
+  .p2 { left: 698px; top: 391px; }
 
-  .name  { top: 435px; font-size: 13.2px; line-height: 13.2px; white-space: nowrap; }
-  .email { top: 450px; font-size: 14px; line-height: 14px; white-space: nowrap; color: #b8b8b8; text-decoration: none; }
+  .name  { top: 516px; font-size: 13.2px; line-height: 13.2px; white-space: nowrap; }
+  .email { top: 531px; font-size: 14px; line-height: 14px; white-space: nowrap; color: #b8b8b8; text-decoration: none; }
   .email:hover { color: #777; }
-  .n1, .e1 { left: 390.5px; }
-  .n2, .e2 { left: 609.5px; }
+  .n1, .e1 { left: 479.5px; }
+  .n2, .e2 { left: 698.5px; }
 
-  /* Phone layout (< 700px): the script zooms onto the content column (x 350–913),
+  /* Phone layout (< 700px): the script zooms onto the content column (x 439–1002),
      so these artboard sizes appear ~67% as large on a 375px-wide phone. */
   .page.m { height: 520px; }
-  .m .hat { left: 376px; top: 52px; width: 100px; }
+  .m .hat { left: 465px; top: 52px; width: 100px; }
+  .m .intro { top: 185.5px; }
+  .m .p1, .m .p2 { top: 310px; }
   .m .name  { top: 435px; font-size: 20px; line-height: 20px; }
   .m .email { top: 459px; font-size: 20px; line-height: 20px; }
 </style>
@@ -55,7 +57,7 @@
   (function () {
     var page = document.getElementById('page');
     // Desktop: show the whole 1440px artboard. Phone: zoom onto the content column.
-    var DESKTOP = { x: 0, w: 1440, h: 812 }, PHONE = { x: 350, w: 563, h: 520 };
+    var DESKTOP = { x: 0, w: 1440, h: 812 }, PHONE = { x: 439, w: 563, h: 520 };
     function fit() {
       var vw = document.documentElement.clientWidth;
       var phone = vw < 700, v = phone ? PHONE : DESKTOP, s = vw / v.w;
