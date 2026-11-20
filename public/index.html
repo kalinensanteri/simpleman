@@ -71,7 +71,9 @@
     float: left; font-size: 112px; line-height: 88px;
     margin: 6px 14px 0 -4px;
   }
-  .m .waitlist { left: 469px; top: 800px; width: 502px; height: 62px; font-size: 30px; line-height: 58px; }
+  /* Phone: photo chunk moves up into the button's old spot; the button goes below the chunk */
+  .m .chunk { transform: translateY(-96px); }
+  .m .waitlist { left: 469px; top: 1462px; width: 502px; height: 62px; font-size: 30px; line-height: 58px; }
   .m .strip { top: 1600px; }
   .m .footer-links { top: 1702px; font-size: 32px; line-height: 34px; }
   .m .footer-links a { margin: 0 18px; }
@@ -88,22 +90,22 @@
 
   <a class="abs waitlist" href="waitlist.html">sign up for waitlist to get early access</a>
 
-  <img class="abs flower" src="img/flower.png" alt="">
-  <img class="abs tile meal-a" src="img/meal3.jpg" alt="Beef bowl">
-  <img class="abs tile meal-b" src="img/meal4.jpg" alt="Beef bowl from above">
-  <img class="abs globe" src="img/globe.png" alt="">
+  <img class="abs chunk flower" src="img/flower.png" alt="">
+  <img class="abs tile chunk meal-a" src="img/meal3.jpg" alt="Beef bowl">
+  <img class="abs tile chunk meal-b" src="img/meal4.jpg" alt="Beef bowl from above">
+  <img class="abs chunk globe" src="img/globe.png" alt="">
 
-  <img class="abs tile meal-c" src="img/meal1.jpg" alt="Chicken bowl">
-  <img class="abs tile meal-d" src="img/meal2.jpg" alt="Chicken bowl from above">
-  <img class="abs tile ingredients" src="img/ingredients.jpg" alt="Raw ingredients">
+  <img class="abs tile chunk meal-c" src="img/meal1.jpg" alt="Chicken bowl">
+  <img class="abs tile chunk meal-d" src="img/meal2.jpg" alt="Chicken bowl from above">
+  <img class="abs tile chunk ingredients" src="img/ingredients.jpg" alt="Raw ingredients">
 
-  <div class="abs nutrition">
+  <div class="abs chunk nutrition">
     <div class="abs label">
       <div class="abs macros">750K<br>49P<br>65C<br>28F</div>
       <img class="abs card" src="img/card.png" alt="Ingredients: sweet potatoes, carrots, beef, eggs, eggplant, broccoli, spices (salt, pepper)">
     </div>
   </div>
-  <img class="abs faces" src="img/faces.png" alt="">
+  <img class="abs chunk faces" src="img/faces.png" alt="">
 
   <img class="abs strip" src="img/strip.jpg" alt="People at work and play">
 
