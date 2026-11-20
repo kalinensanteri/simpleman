@@ -2,3 +2,4 @@ node_modules/
 .wrangler/
 .dev.vars
 designs/first-local-version/
+.claude/
