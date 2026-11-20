@@ -4,12 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simpleman</title>
+<!-- Tinos has the same letter widths as Times New Roman; it is used only where Times New Roman is missing (e.g. Android) so layouts stay identical -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tinos&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: #fff; overflow-x: hidden; }
   /* Clip the scaled artboard so phones cannot scroll past the end of the page */
   body { overflow: hidden; }
-  body { font-family: 'Times New Roman', Times, serif; color: #111; }
+  body { font-family: 'Times New Roman', Tinos, Times, serif; color: #111; }
 
   /* 1440px artboard (measured from "Desktop - 31.png"), scaled to the viewport width */
   .page { position: relative; width: 1440px; height: 1774px; transform-origin: 0 0; }
@@ -26,9 +30,11 @@
   .mission span { display: inline-block; }
 
   .waitlist {
-    left: 571px; top: 745px; width: 297px; height: 34px;
+    /* Width follows the text (padding on both sides), centred on x 720, so the text can never spill out */
+    left: 720px; top: 745px; height: 34px; transform: translateX(-50%);
+    padding: 0 1.15em; white-space: nowrap;
     border: 2px solid #d8d8d8; background: #fff;
-    font: 17px/30px 'Times New Roman', Times, serif; color: #111;
+    font: 17px/30px 'Times New Roman', Tinos, Times, serif; color: #111;
     text-align: center; text-decoration: none; cursor: pointer;
   }
   .waitlist:hover { border-color: #a0a0a0; }
@@ -46,7 +52,7 @@
 
   .nutrition { left: 327px; top: 1286px; width: 367px; height: 222px; background: #e8e8e8; border: 2px solid #707070; }
   .label { left: 54px; top: 37px; width: 253px; height: 144px; background: #fff; border: 2px solid #707070; }
-  .macros { left: 44px; top: 32px; font: 15px/18px 'Times New Roman', Times, serif; color: #000; }
+  .macros { left: 44px; top: 32px; font: 15px/18px 'Times New Roman', Tinos, Times, serif; color: #000; }
   .card { left: 119px; top: 28px; width: 84px; }
 
   .strip { left: 439px; top: 1568px; width: 563px; height: 66px; border: 2px solid #707070; object-fit: cover; }
@@ -54,18 +60,19 @@
   .footer-links { left: 0; top: 1704px; width: 1440px; text-align: center; font-size: 17px; line-height: 18px; }
   .footer-links a { color: #111; text-decoration: none; margin: 0 11px; }
   .footer-links a:hover { text-decoration: underline; }
-  .made { left: 0; top: 1738px; width: 1440px; text-align: center; font: 11px/12px 'Times New Roman', Times, serif; color: #999; }
+  .made { left: 0; top: 1738px; width: 1440px; text-align: center; font: 11px/12px 'Times New Roman', Tinos, Times, serif; color: #999; }
 
   /* Phone layout (< 700px): the script zooms onto the content column (x 269–1169), so these
      sizes are in artboard pixels and appear ~42% as large on a 375px-wide phone. */
   .page.m { height: 1816px; }
   .m .logo { left: 327px; top: 40px; width: 130px; }
-  .m .caption { left: 293px; top: 472px; font-size: 24px; line-height: 24px; }
-  .m .mission { font-size: 35px; line-height: 39px; }
+  .m .caption { left: 293px; top: 478px; font-size: 18px; line-height: 18px; }
+  /* Hero text + button are centred between the photo (ends y 520) and the food photos (start y 930) */
+  .m .mission { top: 631.5px; font-size: 30px; line-height: 34px; }
   /* Phone: narrower, balanced hero text instead of the desktop line breaks */
-  .m .mission span { width: 640px; text-wrap: balance; }
+  .m .mission span { width: 550px; text-wrap: balance; }
   .m .mission br { display: none; }
-  .m .waitlist { left: 469px; top: 800px; width: 502px; height: 62px; font-size: 30px; line-height: 58px; }
+  .m .waitlist { top: 763.5px; height: 52px; font-size: 25px; line-height: 48px; }
   .m .strip { top: 1600px; }
   .m .footer-links { top: 1702px; font-size: 32px; line-height: 34px; }
   .m .footer-links a { margin: 0 18px; }

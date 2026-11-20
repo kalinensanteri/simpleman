@@ -4,12 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simpleman · Manifesto</title>
+<!-- Tinos has the same letter widths as Times New Roman; it is used only where Times New Roman is missing (e.g. Android) so layouts stay identical -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tinos&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: #fff; overflow-x: hidden; }
   /* Clip the scaled artboard so phones cannot scroll past the end of the page */
   body { overflow: hidden; }
-  body { font-family: 'Times New Roman', Times, serif; color: #111; }
+  body { font-family: 'Times New Roman', Tinos, Times, serif; color: #111; }
 
   /* 1440px artboard (measured from "Desktop - 20.png"), scaled to the viewport width */
   .page { position: relative; width: 1440px; height: 1847px; transform-origin: 0 0; }
