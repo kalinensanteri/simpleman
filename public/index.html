@@ -58,18 +58,26 @@
 
   /* Phone layout (< 700px): the script zooms onto the content column (x 269–1169), so these
      sizes are in artboard pixels and appear ~42% as large on a 375px-wide phone. */
-  .page.m { height: 1816px; }
+  .page.m { height: 1868px; }
   .m .logo { left: 327px; top: 40px; width: 130px; }
   .m .caption { left: 293px; top: 472px; font-size: 24px; line-height: 24px; }
-  .m .mission { font-size: 35px; line-height: 39px; }
+  .m .mission { top: 619px; font-size: 35px; line-height: 39px; }
   /* Phone: narrower, balanced hero text instead of the desktop line breaks */
   .m .mission span { width: 640px; text-wrap: balance; }
   .m .mission br { display: none; }
-  .m .waitlist { left: 469px; top: 800px; width: 502px; height: 62px; font-size: 30px; line-height: 58px; }
-  .m .strip { top: 1600px; }
-  .m .footer-links { top: 1702px; font-size: 32px; line-height: 34px; }
+  /* Phone: editorial drop cap, left-aligned like a newspaper column */
+  .m .mission span { width: 520px; text-align: left; text-wrap: pretty; }
+  .m .mission span::first-letter {
+    float: left; font-size: 152px; line-height: 108px;
+    margin: 6px 14px 0 -5px;
+  }
+  /* Phone: photo chunk moves up into the button's old spot; the button goes below the chunk */
+  .m .chunk { transform: translateY(-18px); }
+  .m .waitlist { left: 469px; top: 1530px; width: 502px; height: 62px; font-size: 30px; line-height: 58px; }
+  .m .strip { top: 1652px; }
+  .m .footer-links { top: 1754px; font-size: 32px; line-height: 34px; }
   .m .footer-links a { margin: 0 18px; }
-  .m .made { top: 1758px; font-size: 20px; line-height: 22px; }
+  .m .made { top: 1810px; font-size: 20px; line-height: 22px; }
 </style>
 </head>
 <body>
@@ -82,22 +90,22 @@
 
   <a class="abs waitlist" href="waitlist.html">sign up for waitlist to get early access</a>
 
-  <img class="abs flower" src="img/flower.png" alt="">
-  <img class="abs tile meal-a" src="img/meal3.jpg" alt="Beef bowl">
-  <img class="abs tile meal-b" src="img/meal4.jpg" alt="Beef bowl from above">
-  <img class="abs globe" src="img/globe.png" alt="">
+  <img class="abs chunk flower" src="img/flower.png" alt="">
+  <img class="abs tile chunk meal-a" src="img/meal3.jpg" alt="Beef bowl">
+  <img class="abs tile chunk meal-b" src="img/meal4.jpg" alt="Beef bowl from above">
+  <img class="abs chunk globe" src="img/globe.png" alt="">
 
-  <img class="abs tile meal-c" src="img/meal1.jpg" alt="Chicken bowl">
-  <img class="abs tile meal-d" src="img/meal2.jpg" alt="Chicken bowl from above">
-  <img class="abs tile ingredients" src="img/ingredients.jpg" alt="Raw ingredients">
+  <img class="abs tile chunk meal-c" src="img/meal1.jpg" alt="Chicken bowl">
+  <img class="abs tile chunk meal-d" src="img/meal2.jpg" alt="Chicken bowl from above">
+  <img class="abs tile chunk ingredients" src="img/ingredients.jpg" alt="Raw ingredients">
 
-  <div class="abs nutrition">
+  <div class="abs chunk nutrition">
     <div class="abs label">
       <div class="abs macros">750K<br>49P<br>65C<br>28F</div>
       <img class="abs card" src="img/card.png" alt="Ingredients: sweet potatoes, carrots, beef, eggs, eggplant, broccoli, spices (salt, pepper)">
     </div>
   </div>
-  <img class="abs faces" src="img/faces.png" alt="">
+  <img class="abs chunk faces" src="img/faces.png" alt="">
 
   <img class="abs strip" src="img/strip.jpg" alt="People at work and play">
 
@@ -108,7 +116,7 @@
   (function () {
     var page = document.getElementById('page');
     // Desktop: show the whole 1440px artboard. Phone: zoom onto the content column.
-    var DESKTOP = { x: 0, w: 1440, h: 1774 }, PHONE = { x: 269, w: 900, h: 1816 };
+    var DESKTOP = { x: 0, w: 1440, h: 1774 }, PHONE = { x: 269, w: 900, h: 1868 };
     function fit() {
       var vw = document.documentElement.clientWidth;
       var phone = vw < 700, v = phone ? PHONE : DESKTOP, s = vw / v.w;
