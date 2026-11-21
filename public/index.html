@@ -51,21 +51,10 @@
   .footer img { display: block; width: 39.5px; margin: 0 24.5px 2px 13.5px; }
   .made { left: 0; top: 1942.7px; width: 1392px; text-align: center; font: 18.4px/18.4px 'Times New Roman', Tinos, Times, serif; color: #8a8a8a; }
 
-  /* Phone layout (< 700px): the script zooms onto the photo grid (x 16–1378), so these sizes are
-     in artboard pixels and appear ~28% as large on a 375px-wide phone. The text moves above the
-     photos so it stays readable; the grid moves down to make room. */
-  .page.m { height: 2074px; }
-  .m .logo  { left: 103px; top: 60px; width: 200px; }
-  .m .title { left: 247px; top: 190px; width: 900px; }
-  .m .mission { left: 302px; top: 420px; font-size: 53px; line-height: 58px; }
-  .m .mission span { width: 790px; }
-  .m .mission span::first-letter { font-size: 228px; line-height: 172px; margin: 0 25px 0 -4px; }
-  .m .grid { transform: translateY(251px); }
-  .m .meal-a, .m .meal-b { transform: translate(-315px, 251px); }
-  .m .footer { top: 1888px; width: 1394px; height: 73px; }
-  .m .footer a { font-size: 50px; line-height: 50px; }
-  .m .footer img { width: 72px; margin: 0 45px 4px 25px; }
-  .m .made { top: 1991px; font-size: 33px; line-height: 33px; }
+  /* Phone (< 700px): the same layout as desktop, just zoomed onto the content (x 16–1378) so the
+     photo grid fills the screen with ~24px side margins. Only the logo is placed differently,
+     because desktop positions it for its own zoomed-out view. */
+  .m .logo { left: 103px; top: 41px; width: 89px; }
 </style>
 </head>
 <body>
@@ -97,7 +86,7 @@
     var page = document.getElementById('page');
     // Desktop: a 1820px-wide view centred on the content (x -213 to 1607) gives ~250px side margins at 1440px.
     // Phone: zoom onto the photo grid.
-    var DESKTOP = { x: -213, w: 1820, h: 1981 }, PHONE = { x: 16, w: 1362, h: 2074 };
+    var DESKTOP = { x: -213, w: 1820, h: 1981 }, PHONE = { x: 16, w: 1362, h: 1981 };
     function fit() {
       var vw = document.documentElement.clientWidth;
       var phone = vw < 700, v = phone ? PHONE : DESKTOP, s = vw / v.w;
