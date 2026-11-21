@@ -51,17 +51,13 @@
   .footer img { display: block; width: 39.5px; margin: 0 24.5px 2px 13.5px; }
   .made { left: 0; top: 1942.7px; width: 1392px; text-align: center; font: 18.4px/18.4px 'Times New Roman', Tinos, Times, serif; color: #8a8a8a; }
 
-  /* Desktop intro: the first screen shows only the logo and the title (centred vertically);
-     everything marked .below is pushed under the fold by --shift and fades in when scrolled to */
-  .page:not(.m) .title { top: var(--title-top, 274px); }
-  .page:not(.m) .below { transform: translateY(var(--shift, 0px)); }
-  .page.reveal:not(.m) .below { opacity: 0; transition: opacity 0.9s ease; }
-  .page.reveal:not(.m) .below.in { opacity: 1; }
-
-  /* Phone (< 700px): the same layout as desktop, just zoomed onto the content (x 16–1378) so the
-     photo grid fills the screen with ~24px side margins. Only the logo is placed differently,
-     because desktop positions it for its own zoomed-out view. */
-  .m .logo { left: 103px; top: 41px; width: 89px; }
+  /* Intro (desktop and phone): the first screen shows only the logo and the title (centred
+     vertically); everything marked .below is pushed under the fold by --shift and fades in
+     when scrolled to. The script sets these per screen size. */
+  .page .title { top: var(--title-top, 274px); }
+  .page .below { transform: translateY(var(--shift, 0px)); }
+  .page.reveal .below { opacity: 0; transition: opacity 0.9s ease; }
+  .page.reveal .below.in { opacity: 1; }
 </style>
 </head>
 <body>
@@ -91,38 +87,37 @@
 <script>
   (function () {
     var page = document.getElementById('page');
-    // Desktop: two screens. Screen 1 = logo + title centred. Screen 2 = the text, photos and footer,
-    // zoomed so the whole block fits the screen height (and never wider than ~65% of the width),
-    // centred with wide side margins.
-    // Phone: zoom onto the photo grid.
-    var PHONE = { x: 16, w: 1362, h: 1981 };
+    // Two screens on every device. Screen 1 = logo + title centred. Screen 2 = the text, photos and
+    // footer, zoomed so the whole block fits the screen height and centred.
+    //   Desktop: never wider than ~65% of the screen, so there are wide side margins.
+    //   Phone:   the photo grid fills the width with ~24px side margins.
     var TITLE_H = 76;       // height of the title image in artboard px
     var CONTENT_TOP = 568;  // top of the first photo row
     var CONTENT_H = 1389;   // first photo row down to "Made In Finland"
     var FIT_H = 1560;       // CONTENT_H plus breathing room above and below
-    var MAX_W = 1820;       // never zoom in further than ~65% of the screen width
     var CENTER_X = 697;     // horizontal centre of the photo grid
+    var DESKTOP = { maxW: 1820, logo: { left: 31, top: 41, w: 88 } };
+    var PHONE   = { maxW: 1362, logo: { left: 24, top: 24, w: 24.5 } };
+    var lastW = 0, lastH = 0;
     function fit() {
       var vw = document.documentElement.clientWidth, vh = window.innerHeight;
       var phone = vw < 700;
+      // Phone browsers resize the screen height while scrolling (address bar); ignore that so
+      // the page doesn't jump, and only refit when the width actually changes.
+      if (phone && vw === lastW && lastH) vh = lastH;
+      lastW = vw; lastH = vh;
+      var v = phone ? PHONE : DESKTOP;
       page.classList.toggle('m', phone);
-      if (phone) {
-        var ps = vw / PHONE.w;
-        page.style.setProperty('--shift', '0px');
-        page.style.transform = 'scale(' + ps + ') translateX(' + (-PHONE.x) + 'px)';
-        document.body.style.height = (PHONE.h * ps) + 'px';
-        return;
-      }
-      var s = Math.min(vw / MAX_W, vh / FIT_H);
+      var s = Math.min(vw / v.maxW, vh / FIT_H);
       var x0 = CENTER_X - vw / (2 * s);   // artboard x shown at the left edge of the screen
       var screenH = vh / s;               // one screen height in artboard px
       page.style.setProperty('--title-top', Math.round((screenH - TITLE_H) / 2) + 'px');
       // Centre the content block vertically within the second screen
       var shift = Math.round(screenH + (screenH - CONTENT_H) / 2 - CONTENT_TOP);
       page.style.setProperty('--shift', shift + 'px');
-      page.style.setProperty('--logo-left', (x0 + 31 / s) + 'px');
-      page.style.setProperty('--logo-top', (41 / s) + 'px');
-      page.style.setProperty('--logo-w', (88 / s) + 'px');
+      page.style.setProperty('--logo-left', (x0 + v.logo.left / s) + 'px');
+      page.style.setProperty('--logo-top', (v.logo.top / s) + 'px');
+      page.style.setProperty('--logo-w', (v.logo.w / s) + 'px');
       page.style.transform = 'scale(' + s + ') translateX(' + (-x0) + 'px)';
       document.body.style.height = (2 * vh) + 'px';
     }
