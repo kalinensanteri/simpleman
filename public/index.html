@@ -15,17 +15,20 @@
   body { overflow: hidden; }
   body { font-family: 'Times New Roman', Tinos, Times, serif; color: #111; }
 
-  /* 1440px artboard (measured from "Desktop - 35.png"), scaled to the viewport width */
+  /* 1440px artboard (measured from "Desktop - 35.png"), scaled to the viewport width.
+     Desktop shows it zoomed out to ~79% and centred, so the content has wide side margins. */
   .page { position: relative; width: 1440px; height: 1981px; transform-origin: 0 0; }
   .abs { position: absolute; display: block; }
 
-  .logo  { left: 30px; top: 41px; width: 89px; }
+  /* Desktop shows the artboard zoomed out (see the script) for wider side margins; the logo is
+     placed so it still sits ~31px from the top-left corner at its original size */
+  .logo  { left: -173px; top: 52px; width: 112px; }
   .title { left: 455px; top: 274px; width: 495px; }
 
   /* Newspaper-style column: left-aligned text with a drop cap spanning three lines */
   .mission { left: 194px; top: 625.4px; font-size: 29.1px; line-height: 32px; }
-  .mission span { display: block; width: 442px; text-align: left; }
-  .mission span::first-letter { float: left; font-size: 142px; line-height: 78px; margin: 17.7px 14px 0 -2px; }
+  .mission span { display: block; width: 426px; text-align: left; }
+  .mission span::first-letter { float: left; font-size: 126px; line-height: 95px; margin: 0 14px 0 -2px; }
 
   .tile { border: 2px solid #707070; object-fit: cover; }
   .meal-a { left: 733px;  top: 570px; width: 243px; height: 243px; }
@@ -54,9 +57,9 @@
   .page.m { height: 2074px; }
   .m .logo  { left: 103px; top: 60px; width: 200px; }
   .m .title { left: 247px; top: 190px; width: 900px; }
-  .m .mission { left: 295px; top: 420px; font-size: 53px; line-height: 58px; }
-  .m .mission span { width: 805px; }
-  .m .mission span::first-letter { font-size: 257px; line-height: 141px; margin: 32px 25px 0 -4px; }
+  .m .mission { left: 302px; top: 420px; font-size: 53px; line-height: 58px; }
+  .m .mission span { width: 790px; }
+  .m .mission span::first-letter { font-size: 228px; line-height: 172px; margin: 0 25px 0 -4px; }
   .m .grid { transform: translateY(251px); }
   .m .meal-a, .m .meal-b { transform: translate(-315px, 251px); }
   .m .footer { top: 1888px; width: 1394px; height: 73px; }
@@ -92,8 +95,9 @@
 <script>
   (function () {
     var page = document.getElementById('page');
-    // Desktop: show the whole 1440px artboard. Phone: zoom onto the photo grid.
-    var DESKTOP = { x: 0, w: 1440, h: 1981 }, PHONE = { x: 16, w: 1362, h: 2074 };
+    // Desktop: a 1820px-wide view centred on the content (x -213 to 1607) gives ~250px side margins at 1440px.
+    // Phone: zoom onto the photo grid.
+    var DESKTOP = { x: -213, w: 1820, h: 1981 }, PHONE = { x: 16, w: 1362, h: 2074 };
     function fit() {
       var vw = document.documentElement.clientWidth;
       var phone = vw < 700, v = phone ? PHONE : DESKTOP, s = vw / v.w;
