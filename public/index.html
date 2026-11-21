@@ -15,111 +15,85 @@
   body { overflow: hidden; }
   body { font-family: 'Times New Roman', Tinos, Times, serif; color: #111; }
 
-  /* 1440px artboard (measured from "Desktop - 31.png"), scaled to the viewport width */
-  .page { position: relative; width: 1440px; height: 1828px; transform-origin: 0 0; }
+  /* 1440px artboard (measured from "Desktop - 35.png"), scaled to the viewport width */
+  .page { position: relative; width: 1440px; height: 1981px; transform-origin: 0 0; }
   .abs { position: absolute; display: block; }
 
-  .logo { left: 39px; top: 49px; width: 89px; }
-  .hero { left: 0; top: 104px; width: 1440px; height: 416px; object-fit: cover; }
-  .caption { left: 22px; top: 494px; font-size: 12px; line-height: 12px; color: #fff; opacity: 0.5; white-space: nowrap; }
+  .logo  { left: 30px; top: 41px; width: 89px; }
+  .title { left: 455px; top: 274px; width: 495px; }
 
-  .mission {
-    left: 0; top: 647px; width: 1440px; text-align: center;
-    font-size: 22px; line-height: 24px;
-  }
   /* Newspaper-style column: left-aligned text with a drop cap spanning three lines */
-  .mission span { display: inline-block; width: 340px; text-align: left; }
-  .mission br { display: none; }
-  .mission span::first-letter { float: left; font-size: 95px; line-height: 64px; margin: 6px 10px 0 -2px; }
-
-  .waitlist {
-    /* Width follows the text (padding on both sides), centred on x 720, so the text can never spill out */
-    left: 720px; top: 1548px; height: 34px; transform: translateX(-50%);
-    padding: 0 1.15em; white-space: nowrap;
-    border: 2px solid #d8d8d8; background: #fff;
-    font: 17px/30px 'Times New Roman', Tinos, Times, serif; color: #111;
-    text-align: center; text-decoration: none; cursor: pointer;
-  }
-  .waitlist:hover { border-color: #a0a0a0; }
+  .mission { left: 194px; top: 625.4px; font-size: 29.1px; line-height: 32px; }
+  .mission span { display: block; width: 442px; text-align: left; }
+  .mission span::first-letter { float: left; font-size: 142px; line-height: 78px; margin: 17.7px 14px 0 -2px; }
 
   .tile { border: 2px solid #707070; object-fit: cover; }
-  .meal-a { left: 534px; top: 930px;  width: 160px; height: 160px; }
-  .meal-b { left: 744px; top: 930px;  width: 160px; height: 160px; }
-  .meal-c { left: 327px; top: 1108px; width: 160px; height: 160px; }
-  .meal-d { left: 534px; top: 1107px; width: 160px; height: 160px; }
-  .ingredients { left: 744px; top: 1109px; width: 368px; height: 223px; }
+  .meal-a { left: 733px;  top: 570px; width: 243px; height: 243px; }
+  .meal-b { left: 1048px; top: 568px; width: 243px; height: 243px; }
+  .meal-c { left: 103px;  top: 890px; width: 243px; height: 243px; }
+  .meal-d { left: 418px;  top: 888px; width: 243px; height: 243px; }
+  .ingredients { left: 733px; top: 888px; width: 558px; height: 347px; }
 
-  .flower { left: 370px; top: 984px; width: 62px; }
-  .globe  { left: 978px; top: 980px; width: 54px; }
-  .faces  { left: 872px; top: 1425px; width: 110px; }
+  .nutrition { left: 103px; top: 1211px; width: 558px; height: 347px; background: #e8e8e8; border: 2px solid #5b5b5b; }
+  .label  { left: 83px; top: 62px; width: 387px; height: 219px; background: #fff; border: 2px solid #747474; }
+  .macros { left: 66.5px; top: 46.6px; font: 23.4px/28px 'Times New Roman', Tinos, Times, serif; color: #000; }
+  .card   { left: 184px; top: 42.5px; width: 129.5px; }
 
-  .nutrition { left: 327px; top: 1286px; width: 367px; height: 222px; background: #e8e8e8; border: 2px solid #707070; }
-  .label { left: 54px; top: 37px; width: 253px; height: 144px; background: #fff; border: 2px solid #707070; }
-  .macros { left: 44px; top: 32px; font: 15px/18px 'Times New Roman', Tinos, Times, serif; color: #000; }
-  .card { left: 119px; top: 28px; width: 84px; }
+  .faces { left: 926px; top: 1396px; width: 169.5px; }
 
-  .strip { left: 439px; top: 1622px; width: 563px; height: 66px; border: 2px solid #707070; object-fit: cover; }
+  /* Footer: "contact us", the flower drawing and "pursuit of real" sit on one line */
+  .footer { left: 0; top: 1879px; width: 1433px; height: 40px; display: flex; justify-content: center; align-items: flex-end; }
+  .footer a { color: #111; text-decoration: none; font-size: 27.5px; line-height: 27.5px; white-space: nowrap; }
+  .footer a:hover { text-decoration: underline; }
+  .footer img { display: block; width: 39.5px; margin: 0 24.5px 2px 13.5px; }
+  .made { left: 0; top: 1942.7px; width: 1392px; text-align: center; font: 18.4px/18.4px 'Times New Roman', Tinos, Times, serif; color: #8a8a8a; }
 
-  .footer-links { left: 0; top: 1758px; width: 1440px; text-align: center; font-size: 17px; line-height: 18px; }
-  .footer-links a { color: #111; text-decoration: none; margin: 0 11px; }
-  .footer-links a:hover { text-decoration: underline; }
-  .made { left: 0; top: 1792px; width: 1440px; text-align: center; font: 11px/12px 'Times New Roman', Tinos, Times, serif; color: #999; }
-
-  /* Phone layout (< 700px): the script zooms onto the content column (x 269–1169), so these
-     sizes are in artboard pixels and appear ~42% as large on a 375px-wide phone. */
-  .page.m { height: 1896px; }
-  .m .logo { left: 327px; top: 40px; width: 130px; }
-  .m .caption { left: 293px; top: 478px; font-size: 18px; line-height: 18px; }
-  /* Hero text is centred between the photo (ends y 520) and the food photos (start y 930) */
-  .m .mission { top: 601px; font-size: 30px; line-height: 34px; }
-  /* Phone: narrower, balanced hero text instead of the desktop line breaks */
-  .m .mission span { width: 480px; text-wrap: pretty; }
-  .m .mission span::first-letter { font-size: 133px; line-height: 90px; margin: 8px 14px 0 -3px; }
-  .m .mission br { display: none; }
-  .m .waitlist { top: 1568px; height: 52px; font-size: 25px; line-height: 48px; }
-  .m .strip { top: 1680px; }
-  .m .footer-links { top: 1782px; font-size: 32px; line-height: 34px; }
-  .m .footer-links a { margin: 0 18px; }
-  .m .made { top: 1838px; font-size: 20px; line-height: 22px; }
+  /* Phone layout (< 700px): the script zooms onto the photo grid (x 16–1378), so these sizes are
+     in artboard pixels and appear ~28% as large on a 375px-wide phone. The text moves above the
+     photos so it stays readable; the grid moves down to make room. */
+  .page.m { height: 2074px; }
+  .m .logo  { left: 103px; top: 60px; width: 200px; }
+  .m .title { left: 247px; top: 190px; width: 900px; }
+  .m .mission { left: 295px; top: 420px; font-size: 53px; line-height: 58px; }
+  .m .mission span { width: 805px; }
+  .m .mission span::first-letter { font-size: 257px; line-height: 141px; margin: 32px 25px 0 -4px; }
+  .m .grid { transform: translateY(251px); }
+  .m .meal-a, .m .meal-b { transform: translate(-315px, 251px); }
+  .m .footer { top: 1888px; width: 1394px; height: 73px; }
+  .m .footer a { font-size: 50px; line-height: 50px; }
+  .m .footer img { width: 72px; margin: 0 45px 4px 25px; }
+  .m .made { top: 1991px; font-size: 33px; line-height: 33px; }
 </style>
 </head>
 <body>
 <div class="page" id="page">
   <img class="abs logo" src="img/logo.png" alt="Simpleman">
-  <img class="abs hero" src="img/hero-31.jpg" alt="Finnish forest lake">
-  <p class="abs caption">Kuhmo, Finland</p>
+  <img class="abs title" src="img/title.png" alt="humanity-focused nutrition">
 
-  <p class="abs mission"><span>Wherever people put their minds and bodies on the line <br>at work, nutritious, minimally processed food should be <br>available.</span></p>
+  <p class="abs mission"><span>Wherever people put their minds and bodies on the line at work, nutritious, minimally processed food should be available.</span></p>
 
-  <a class="abs waitlist" href="waitlist.html">sign up for waitlist to get early access</a>
+  <img class="abs tile grid meal-a" src="img/meal3.jpg" alt="Beef bowl">
+  <img class="abs tile grid meal-b" src="img/meal4.jpg" alt="Beef bowl from above">
+  <img class="abs tile grid meal-c" src="img/meal1.jpg" alt="Chicken bowl">
+  <img class="abs tile grid meal-d" src="img/meal2.jpg" alt="Chicken bowl from above">
+  <img class="abs tile grid ingredients" src="img/ingredients.jpg" alt="Raw ingredients">
 
-  <img class="abs flower" src="img/flower.png" alt="">
-  <img class="abs tile meal-a" src="img/meal3.jpg" alt="Beef bowl">
-  <img class="abs tile meal-b" src="img/meal4.jpg" alt="Beef bowl from above">
-  <img class="abs globe" src="img/globe.png" alt="">
-
-  <img class="abs tile meal-c" src="img/meal1.jpg" alt="Chicken bowl">
-  <img class="abs tile meal-d" src="img/meal2.jpg" alt="Chicken bowl from above">
-  <img class="abs tile ingredients" src="img/ingredients.jpg" alt="Raw ingredients">
-
-  <div class="abs nutrition">
+  <div class="abs grid nutrition">
     <div class="abs label">
       <div class="abs macros">750K<br>49P<br>65C<br>28F</div>
       <img class="abs card" src="img/card.png" alt="Ingredients: sweet potatoes, carrots, beef, eggs, eggplant, broccoli, spices (salt, pepper)">
     </div>
   </div>
-  <img class="abs faces" src="img/faces.png" alt="">
+  <img class="abs grid faces" src="img/faces.png" alt="">
 
-  <img class="abs strip" src="img/strip.jpg" alt="People at work and play">
-
-  <nav class="abs footer-links"><a href="contact.html">contact us</a><a href="manifesto.html">manifesto</a></nav>
+  <nav class="abs footer"><a href="contact.html">contact us</a><img src="img/flower.png" alt=""><a href="manifesto.html">pursuit of real</a></nav>
   <p class="abs made">Made In Finland</p>
 </div>
 <script>
   (function () {
     var page = document.getElementById('page');
-    // Desktop: show the whole 1440px artboard. Phone: zoom onto the content column.
-    var DESKTOP = { x: 0, w: 1440, h: 1828 }, PHONE = { x: 269, w: 900, h: 1896 };
+    // Desktop: show the whole 1440px artboard. Phone: zoom onto the photo grid.
+    var DESKTOP = { x: 0, w: 1440, h: 1981 }, PHONE = { x: 16, w: 1362, h: 2074 };
     function fit() {
       var vw = document.documentElement.clientWidth;
       var phone = vw < 700, v = phone ? PHONE : DESKTOP, s = vw / v.w;
