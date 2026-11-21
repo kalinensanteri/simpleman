@@ -51,6 +51,13 @@
   .footer img { display: block; width: 39.5px; margin: 0 24.5px 2px 13.5px; }
   .made { left: 0; top: 1942.7px; width: 1392px; text-align: center; font: 18.4px/18.4px 'Times New Roman', Tinos, Times, serif; color: #8a8a8a; }
 
+  /* Desktop intro: the first screen shows only the logo and the title (centred vertically);
+     everything marked .below is pushed under the fold by --shift and fades in when scrolled to */
+  .page:not(.m) .title { top: var(--title-top, 274px); }
+  .page:not(.m) .below { transform: translateY(var(--shift, 0px)); }
+  .page.reveal:not(.m) .below { opacity: 0; transition: opacity 0.9s ease; }
+  .page.reveal:not(.m) .below.in { opacity: 1; }
+
   /* Phone (< 700px): the same layout as desktop, just zoomed onto the content (x 16–1378) so the
      photo grid fills the screen with ~24px side margins. Only the logo is placed differently,
      because desktop positions it for its own zoomed-out view. */
@@ -62,24 +69,24 @@
   <img class="abs logo" src="img/logo.png" alt="Simpleman">
   <img class="abs title" src="img/title.png" alt="humanity-focused nutrition">
 
-  <p class="abs mission"><span>Wherever people put their minds and bodies on the line at work, nutritious, minimally processed food should be available.</span></p>
+  <p class="abs below mission"><span>Wherever people put their minds and bodies on the line at work, nutritious, minimally processed food should be available.</span></p>
 
-  <img class="abs tile grid meal-a" src="img/meal3.jpg" alt="Beef bowl">
-  <img class="abs tile grid meal-b" src="img/meal4.jpg" alt="Beef bowl from above">
-  <img class="abs tile grid meal-c" src="img/meal1.jpg" alt="Chicken bowl">
-  <img class="abs tile grid meal-d" src="img/meal2.jpg" alt="Chicken bowl from above">
-  <img class="abs tile grid ingredients" src="img/ingredients.jpg" alt="Raw ingredients">
+  <img class="abs below tile grid meal-a" src="img/meal3.jpg" alt="Beef bowl">
+  <img class="abs below tile grid meal-b" src="img/meal4.jpg" alt="Beef bowl from above">
+  <img class="abs below tile grid meal-c" src="img/meal1.jpg" alt="Chicken bowl">
+  <img class="abs below tile grid meal-d" src="img/meal2.jpg" alt="Chicken bowl from above">
+  <img class="abs below tile grid ingredients" src="img/ingredients.jpg" alt="Raw ingredients">
 
-  <div class="abs grid nutrition">
+  <div class="abs below grid nutrition">
     <div class="abs label">
       <div class="abs macros">750K<br>49P<br>65C<br>28F</div>
       <img class="abs card" src="img/card.png" alt="Ingredients: sweet potatoes, carrots, beef, eggs, eggplant, broccoli, spices (salt, pepper)">
     </div>
   </div>
-  <img class="abs grid faces" src="img/faces.png" alt="">
+  <img class="abs below grid faces" src="img/faces.png" alt="">
 
-  <nav class="abs footer"><a href="contact.html">contact us</a><img src="img/flower.png" alt=""><a href="manifesto.html">pursuit of real</a></nav>
-  <p class="abs made">Made In Finland</p>
+  <nav class="abs below footer"><a href="contact.html">contact us</a><img src="img/flower.png" alt=""><a href="manifesto.html">pursuit of real</a></nav>
+  <p class="abs below made">Made In Finland</p>
 </div>
 <script>
   (function () {
@@ -87,15 +94,47 @@
     // Desktop: a 1820px-wide view centred on the content (x -213 to 1607) gives ~250px side margins at 1440px.
     // Phone: zoom onto the photo grid.
     var DESKTOP = { x: -213, w: 1820, h: 1981 }, PHONE = { x: 16, w: 1362, h: 1981 };
+    var TITLE_H = 76;      // height of the title image in artboard px
+    var CONTENT_TOP = 568; // first photo row; everything from here down is pushed below the fold
+    var GAP = 140;         // space between the bottom of the first screen and the content
     function fit() {
       var vw = document.documentElement.clientWidth;
       var phone = vw < 700, v = phone ? PHONE : DESKTOP, s = vw / v.w;
+      var shift = 0;
       page.classList.toggle('m', phone);
+      if (!phone) {
+        // Centre the title in the first screen and start the content just below it
+        var screenH = window.innerHeight / s;
+        page.style.setProperty('--title-top', Math.round((screenH - TITLE_H) / 2) + 'px');
+        shift = Math.max(0, Math.round(screenH + GAP - CONTENT_TOP));
+      }
+      page.style.setProperty('--shift', shift + 'px');
       page.style.transform = 'scale(' + s + ') translateX(' + (-v.x) + 'px)';
-      document.body.style.height = (v.h * s) + 'px';
+      document.body.style.height = ((v.h + shift) * s) + 'px';
     }
     window.addEventListener('resize', fit);
     fit();
+
+    // Desktop: fade each part in once it has scrolled into view (or been scrolled past,
+    // e.g. after jumping straight to the bottom), so nothing can stay hidden.
+    var hidden = Array.prototype.slice.call(document.querySelectorAll('.below'));
+    var queued = false;
+    function reveal() {
+      queued = false;
+      var limit = window.innerHeight * 0.9;
+      // At the very bottom of the page, show everything (the footer never reaches the 90% line)
+      var atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4;
+      hidden = hidden.filter(function (el) {
+        if (atBottom || el.getBoundingClientRect().top < limit) { el.classList.add('in'); return false; }
+        return true;
+      });
+      if (!hidden.length) window.removeEventListener('scroll', onScroll);
+    }
+    function onScroll() { if (!queued) { queued = true; requestAnimationFrame(reveal); } }
+    page.classList.add('reveal');
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    reveal();
   })();
 </script>
 </body>
