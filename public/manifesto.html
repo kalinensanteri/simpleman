@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simpleman · Manifesto</title>
+<title>Simpleman · The Pursuit of Real</title>
 <!-- Tinos has the same letter widths as Times New Roman; it is used only where Times New Roman is missing (e.g. Android) so layouts stay identical -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,54 +16,45 @@
   body { font-family: 'Times New Roman', Tinos, Times, serif; color: #111; }
 
   /* 1440px artboard (measured from "Desktop - 20.png"), scaled to the viewport width */
-  .page { position: relative; width: 1440px; height: 1847px; transform-origin: 0 0; }
+  .page { position: relative; width: 1440px; height: 2600px; transform-origin: 0 0; }
   .abs { position: absolute; display: block; }
 
-  .hero { left: 0; top: 98px; width: 1440px; height: 426px; object-fit: cover; }
+  .title { left: 160px; top: 316px; width: 410px; }
 
-  h1.abs { left: 452px; top: 706px; font-weight: normal; font-size: 53px; line-height: 53px; white-space: nowrap; }
+  .quote { left: 148px; top: 848px; font-size: 40.6px; line-height: 47px; white-space: nowrap; }
+  .what  { left: 147px; top: 1111px; font-size: 40.6px; line-height: 43.5px; white-space: nowrap; }
 
-  .quote { left: 452px; top: 782px; font-size: 19.5px; line-height: 22.5px; white-space: nowrap; }
-  .what  { left: 452px; top: 908px; font-size: 19.5px; line-height: 21px; white-space: nowrap; }
+  .item { left: 147.5px; font-size: 40.6px; line-height: 43.5px; white-space: nowrap; }
+  .item .num { display: inline-block; width: 94.5px; }
+  .i1 { top: 1196px; }
+  .i2 { top: 1369px; }
+  .i3 { top: 1541px; }
 
-  .item { left: 452px; font-size: 19.5px; line-height: 21px; white-space: nowrap; }
-  .item .num { display: inline-block; width: 46px; }
-  .i1 { top: 949px; }
-  .i2 { top: 1032px; }
-  .i3 { top: 1114px; }
+  .future  { left: 382.5px; top: 2045px; font-size: 27.8px; line-height: 29px; white-space: nowrap; }
+  /* z-index keeps the text in front of the drawing image, whose white background overlaps "future" */
+  .signoff { left: 517.5px; top: 2271.5px; font-size: 27.8px; line-height: 29px; white-space: nowrap; z-index: 1; }
+  .signoff .dash { display: inline-block; width: 27.5px; }
 
-  .stripbox { left: 304px; top: 1280px; width: 832px; height: 69px; overflow: hidden; }
-  .stripbox img { display: block; width: 100%; height: 100%; }
-
-  .future { left: 541px; top: 1449px; font-size: 16.5px; line-height: 18.5px; white-space: nowrap; }
-  .future .dash { display: inline-block; width: 50px; }
-
-  .drawing { left: 766px; top: 1557px; width: 280px; }
+  .drawing { left: 712px; top: 2234px; width: 368px; }
 
   /* Phone layout (< 700px): plain top-to-bottom page at real size (no artboard scaling). */
-  .page.m { width: auto; height: auto; padding-bottom: 48px; }
+  .page.m { width: auto; height: auto; padding: 40px 26px 56px; }
   .m .abs { position: static; white-space: normal; }
   .m br.d { display: none; }
-  .m .hero { width: 100%; height: auto; }
-  .m h1.abs { font-size: 26px; line-height: 30px; margin: 34px 26px 16px; }
-  .m .quote { font-size: 15px; line-height: 21px; margin: 0 26px 28px; }
-  .m .what  { font-size: 15px; line-height: 21px; margin: 0 26px 14px; }
-  .m .item  { font-size: 15px; line-height: 21px; margin: 0 26px 14px; }
+  .m .title { width: 62%; margin: 0 0 40px; }
+  .m .quote { font-size: 15px; line-height: 21px; margin: 0 0 28px; }
+  .m .what  { font-size: 15px; line-height: 21px; margin: 0 0 14px; }
+  .m .item  { font-size: 15px; line-height: 21px; margin: 0 0 14px; }
   .m .item .num { width: 22px; }
-  .m .stripbox { width: auto; height: auto; margin: 40px 0 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .m .stripbox img { width: auto; height: 70px; max-width: none; }
-  .m .stripbox { scrollbar-width: none; }
-  .m .stripbox::-webkit-scrollbar { display: none; }
-  .m .future { font-size: 14px; line-height: 19px; margin: 34px 26px 0; }
-  .m .future .dash { width: 28px; }
-  .m .drawing { width: 50%; margin: 18px 0 0 34%; }
+  .m .future  { font-size: 13px; line-height: 18px; margin: 40px 0 0 18%; }
+  .m .signoff { font-size: 13px; line-height: 18px; margin: 14px 0 0 32%; }
+  .m .signoff .dash { width: 13px; }
+  .m .drawing { width: 52%; margin: 12px 0 0 44%; }
 </style>
 </head>
 <body>
 <div class="page" id="page">
-  <img class="abs hero" src="img/manifesto-hero.jpg" alt="manifesto">
-
-  <h1 class="abs">Pursuit of real</h1>
+  <a href="index.html" aria-label="Simpleman home"><img class="abs title" src="img/manifesto-title.png" alt="The Pursuit of Real"></a>
 
   <p class="abs quote">“The word "real" primarily means existing in fact, genuine, or not<br class="d"> imaginary. It comes from the Latin word res, meaning "thing".</p>
 
@@ -75,11 +66,10 @@
 
   <p class="abs item i3"><span class="num">3.</span>We become what we consume. The environment we spend our<br class="d"> time in, the food we eat, the social relationships we immerse<br class="d"> ourselves in.</p>
 
-  <div class="abs stripbox"><img src="img/manifesto-strip.jpg" alt="Photos of people and places"></div>
+  <p class="abs future">“...and at the time when the sun exploded<br class="d"> and the last starships left the earth,<br class="d"> simpleman always stayed real, was non-<br class="d">negotiable about the nutrition it brought and<br class="d"> always served genuine people doing<br class="d"> important work.”</p>
+  <p class="abs signoff"><span class="dash">-</span>Someone, the future</p>
 
-  <p class="abs future">“...and at the time when the sun exploded and the last<br class="d"> starships left the earth, simpleman always stayed real,<br class="d"> was non-negotiable about the nutrition it brought and<br class="d"> always served genuine people doing important work.”<br><span class="dash">-</span>Someone, the future</p>
-
-  <img class="abs drawing" src="img/manifesto-drawing.png" alt="">
+  <img class="abs drawing" src="img/manifesto-drawing2.png" alt="">
 </div>
 <script>
   (function () {
@@ -94,7 +84,7 @@
       } else {
         var s = vw / 1440;
         page.style.transform = 'scale(' + s + ')';
-        document.body.style.height = (1847 * s) + 'px';
+        document.body.style.height = (2600 * s) + 'px';
       }
     }
     window.addEventListener('resize', fit);
