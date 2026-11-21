@@ -74,7 +74,10 @@
 <script>
   (function () {
     var page = document.getElementById('page');
-    // Desktop: scale the 1440px artboard. Phone: plain flowing layout (see .m styles).
+    // Desktop: show the 1440px artboard at about half size (a 2880px-wide view), centred on the
+    // text column so there are wide white margins. Phone: plain flowing layout (see .m styles).
+    var VIEW_W = 2880;    // artboard px shown across the screen width (1440 = design size)
+    var CENTER_X = 706;   // horizontal centre of the text column
     function fit() {
       var vw = document.documentElement.clientWidth, phone = vw < 700;
       page.classList.toggle('m', phone);
@@ -82,8 +85,9 @@
         page.style.transform = 'none';
         document.body.style.height = 'auto';
       } else {
-        var s = vw / 1440;
-        page.style.transform = 'scale(' + s + ')';
+        var s = Math.min(vw / VIEW_W, 0.5);  // never larger than half the design size
+        var x0 = CENTER_X - vw / (2 * s);   // artboard x shown at the left edge of the screen
+        page.style.transform = 'scale(' + s + ') translateX(' + (-x0) + 'px)';
         document.body.style.height = (2600 * s) + 'px';
       }
     }
