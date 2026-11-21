@@ -16,12 +16,13 @@
   body { font-family: 'Times New Roman', Tinos, Times, serif; color: #111; }
 
   /* 1440px artboard (measured from "Desktop - 20.png"), scaled to the viewport width */
-  .page { position: relative; width: 1440px; height: 2600px; transform-origin: 0 0; }
+  .page { position: relative; width: 1440px; height: 2950px; transform-origin: 0 0; }
   .abs { position: absolute; display: block; }
 
   .title { left: 160px; top: 316px; width: 410px; }
 
   .quote { left: 148px; top: 848px; font-size: 40.6px; line-height: 47px; white-space: nowrap; }
+  .cite  { left: 148px; top: 906px; font-size: 27.8px; line-height: 29px; color: #8a8a8a; white-space: nowrap; }
   .what  { left: 147px; top: 1111px; font-size: 40.6px; line-height: 43.5px; white-space: nowrap; }
 
   .item { left: 147.5px; font-size: 40.6px; line-height: 43.5px; white-space: nowrap; }
@@ -38,25 +39,27 @@
   .drawing { left: 712px; top: 2234px; width: 368px; }
 
   /* Phone layout (< 700px): plain top-to-bottom page at real size (no artboard scaling). */
-  .page.m { width: auto; height: auto; padding: 36px 40px 48px; }
+  .page.m { width: auto; height: auto; padding: 36px 40px 160px; }
   .m .abs { position: static; white-space: normal; }
   .m br.d { display: none; }
-  .m .title { width: 45%; margin: 0 0 32px; }
-  .m .quote { font-size: 12px; line-height: 17px; margin: 0 0 22px; }
-  .m .what  { font-size: 12px; line-height: 17px; margin: 0 0 11px; }
-  .m .item  { font-size: 12px; line-height: 17px; margin: 0 0 11px; }
-  .m .item .num { width: 18px; }
-  .m .future  { font-size: 11px; line-height: 15px; margin: 32px 0 0 18%; }
-  .m .signoff { font-size: 11px; line-height: 15px; margin: 11px 0 0 32%; }
-  .m .signoff .dash { width: 11px; }
-  .m .drawing { width: 40%; margin: 10px 0 0 48%; }
+  .m .title { width: 50%; margin: 0 0 34px; }
+  .m .quote { font-size: 13px; line-height: 18.5px; margin: 0 0 4px; }
+  .m .cite  { font-size: 12px; line-height: 16.5px; margin: 0 0 24px; }
+  .m .what  { font-size: 13px; line-height: 18.5px; margin: 0 0 12px; }
+  .m .item  { font-size: 13px; line-height: 18.5px; margin: 0 0 12px; }
+  .m .item .num { width: 20px; }
+  .m .future  { font-size: 12px; line-height: 16.5px; margin: 34px 0 0 18%; }
+  .m .signoff { font-size: 12px; line-height: 16.5px; margin: 12px 0 0 32%; }
+  .m .signoff .dash { width: 12px; }
+  .m .drawing { width: 44%; margin: 10px 0 0 46%; }
 </style>
 </head>
 <body>
 <div class="page" id="page">
   <a href="index.html" aria-label="Simpleman home"><img class="abs title" src="img/manifesto-title.png" alt="The Pursuit of Real"></a>
 
-  <p class="abs quote">“The word <b>"real"</b> primarily means existing in fact, genuine, or not<br class="d"> imaginary. It comes from the Latin word <i>res</i>, meaning "thing".”</p>
+  <p class="abs quote">“The word <b>"real"</b> means existing in fact and not imaginary.”</p>
+  <p class="abs cite">— Cambridge Dictionary</p>
 
   <p class="abs what">What do we believe in?</p>
 
@@ -76,7 +79,7 @@
     var page = document.getElementById('page');
     // Desktop: show the 1440px artboard at about half size (a 2880px-wide view), centred on the
     // text column so there are wide white margins. Phone: plain flowing layout (see .m styles).
-    var VIEW_W = 2880;    // artboard px shown across the screen width (1440 = design size)
+    var VIEW_W = 2620;    // artboard px shown across the screen width (1440 = design size)
     var CENTER_X = 706;   // horizontal centre of the text column
     function fit() {
       var vw = document.documentElement.clientWidth, phone = vw < 700;
@@ -85,10 +88,10 @@
         page.style.transform = 'none';
         document.body.style.height = 'auto';
       } else {
-        var s = Math.min(vw / VIEW_W, 0.5);  // never larger than half the design size
+        var s = Math.min(vw / VIEW_W, 0.55);  // never larger than 55% of the design size
         var x0 = CENTER_X - vw / (2 * s);   // artboard x shown at the left edge of the screen
         page.style.transform = 'scale(' + s + ') translateX(' + (-x0) + 'px)';
-        document.body.style.height = (2600 * s) + 'px';
+        document.body.style.height = (2950 * s) + 'px';
       }
     }
     window.addEventListener('resize', fit);
