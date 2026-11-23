@@ -24,6 +24,8 @@
      always sits ~31px from the top-left corner at the same on-screen size */
   .logo  { left: var(--logo-left, -173px); top: var(--logo-top, 52px); width: var(--logo-w, 112px); }
   .title { left: 455px; top: 274px; width: 495px; }
+  /* Trident figure to the left of the title, vertically centred on it (title is 76px tall) */
+  .figure { left: 20px; width: 352px; top: calc(var(--title-top, 274px) + 38px - 208px); }
 
   /* Newspaper-style column: left-aligned text with a drop cap spanning three lines */
   .mission { left: 194px; top: 625.4px; font-size: 29.1px; line-height: 32px; }
@@ -59,11 +61,16 @@
   .page .below { transform: translateY(var(--shift, 0px)); }
   .page.reveal .below { opacity: 0; transition: opacity 0.9s ease; }
   .page.reveal .below.in { opacity: 1; }
+
+  /* Phone: centre the figure + title pair (930px wide) on the grid centre (x 697) so the figure isn't at the edge */
+  .m .figure { left: 232px; }
+  .m .title  { left: 667px; }
 </style>
 </head>
 <body>
 <div class="page" id="page">
   <img class="abs logo" src="img/logo.png" alt="Simpleman">
+  <img class="abs figure" src="img/poseidon.jpg" alt="">
   <img class="abs title" src="img/title.png" alt="humanity-focused nutrition">
 
   <p class="abs below mission"><span>Wherever people put their minds and bodies on the line at work, nutritious, minimally processed food should be available.</span></p>
