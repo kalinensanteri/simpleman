@@ -43,6 +43,16 @@
   .meal-d { left: 418px;  top: 888px; width: 243px; height: 243px; }
   .ingredients { left: 733px; top: 888px; width: 558px; height: 347px; }
 
+  /* "join waitlist" button in the space under the ingredients photo, where the faces drawing was.
+     A full-width wrapper centres it (the .below fade/shift already uses transform). */
+  .joinwrap { left: 733px; width: 558px; top: 1395.5px; text-align: center; }
+  .joinwrap a { display: inline-block; padding: 0 1.15em; height: 55px; border: 2px solid #d8d8d8; background: #fff;
+    font: 27.5px/51px 'Times New Roman', Tinos, Times, serif; color: #111; text-decoration: none; white-space: nowrap; }
+  .joinwrap a:hover { border-color: #a0a0a0; }
+  /* Phone: the layout is shrunk to fit, so make the button bigger to stay readable and tappable */
+  .m .joinwrap { top: 1373px; }
+  .m .joinwrap a { height: 100px; font-size: 48px; line-height: 96px; border-width: 3px; }
+
   .nutrition { left: 103px; top: 1211px; width: 558px; height: 347px; background: #e8e8e8; border: 2px solid #5b5b5b; }
   .label  { left: 83px; top: 62px; width: 387px; height: 219px; background: #fff; border: 2px solid #747474; }
   .macros { left: 66.5px; top: 46.6px; font: 23.4px/28px 'Times New Roman', Tinos, Times, serif; color: #000; }
@@ -73,7 +83,7 @@
 </head>
 <body>
 <div class="page" id="page">
-  <img class="abs logo" src="img/wordmark.png" alt="Simpleman">
+  <img class="abs logo" src="img/sm.png" alt="Simpleman">
   <img class="abs figure" src="img/poseidon.jpg" alt="">
   <div class="abs intro-quote">
     <p class="lead">“The primary purpose of food</p>
@@ -95,6 +105,8 @@
     </div>
   </div>
 
+  <div class="abs below grid joinwrap"><a href="waitlist.html">join waitlist</a></div>
+
   <nav class="abs below footer"><a href="contact.html">contact us</a><img src="img/flower.png" alt=""><a href="manifesto.html">pursuit of real</a></nav>
   <p class="abs below made">Made In Finland</p>
 </div>
@@ -110,8 +122,8 @@
     var CONTENT_H = 1389;   // first photo row down to "Made In Finland"
     var FIT_H = 1560;       // CONTENT_H plus breathing room above and below
     var CENTER_X = 697;     // horizontal centre of the photo grid
-    var DESKTOP = { maxW: 1820, logo: { left: 45, top: 41, w: 90 } };
-    var PHONE   = { maxW: 1362, logo: { left: 24, top: 24, w: 56 } };
+    var DESKTOP = { maxW: 1820, logo: { left: 45, top: 41, w: 60 } };
+    var PHONE   = { maxW: 1362, logo: { left: 24, top: 24, w: 40 } };
     var lastW = 0, lastH = 0;
     function fit() {
       var vw = document.documentElement.clientWidth, vh = window.innerHeight;
