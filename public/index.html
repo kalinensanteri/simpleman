@@ -23,10 +23,13 @@
   /* Desktop zoom depends on the screen (see the script); the script sets these so the logo
      always sits ~31px from the top-left corner at the same on-screen size */
   .logo  { left: var(--logo-left, -173px); top: var(--logo-top, 52px); width: var(--logo-w, 112px); }
-  /* The trident figure + title pair (352 + 83 gap + 495 = 930px) is centred on the grid/screen centre (x 697);
-     the figure is vertically centred on the title (title is 76px tall) */
-  .title { left: 667px; top: 274px; width: 495px; }
-  .figure { left: 232px; width: 352px; top: calc(var(--title-top, 274px) + 38px - 208px); }
+  /* Intro: trident figure + quote. Desktop: side by side (446 + 86 gap + 651 = 1183px) centred on the
+     grid/screen centre (x 697), the quote vertically centred on the figure (527px tall).
+     --intro-top (set by the script) is the top of the figure. */
+  .figure { left: 106px; width: 446px; top: var(--intro-top, 300px); }
+  .intro-quote { left: 637px; width: 651px; top: calc(var(--intro-top, 300px) + 156px); }
+  .intro-quote .lead { font-size: 54.3px; line-height: 60px; white-space: nowrap; }
+  .intro-quote .body { font-size: 31.8px; line-height: 47.75px; text-align: justify; }
 
   /* Newspaper-style column: left-aligned text with a drop cap spanning three lines */
   .mission { left: 194px; top: 625.4px; font-size: 29.1px; line-height: 32px; }
@@ -58,17 +61,25 @@
   /* Intro (desktop and phone): the first screen shows only the logo and the title (centred
      vertically); everything marked .below is pushed under the fold by --shift and fades in
      when scrolled to. The script sets these per screen size. */
-  .page .title { top: var(--title-top, 274px); }
   .page .below { transform: translateY(var(--shift, 0px)); }
   .page.reveal .below { opacity: 0; transition: opacity 0.9s ease; }
   .page.reveal .below.in { opacity: 1; }
+
+  /* Phone intro: figure centred above the quote (figure 615px tall + 70 gap), larger text */
+  .m .figure { left: 437px; width: 520px; }
+  .m .intro-quote { left: 147px; width: 1100px; top: calc(var(--intro-top, 300px) + 685px); }
+  .m .intro-quote .lead { font-size: 91.8px; line-height: 104px; }
+  .m .intro-quote .body { font-size: 52px; line-height: 78px; }
 </style>
 </head>
 <body>
 <div class="page" id="page">
   <img class="abs logo" src="img/logo.png" alt="Simpleman">
   <img class="abs figure" src="img/poseidon.jpg" alt="">
-  <img class="abs title" src="img/title.png" alt="humanity-focused nutrition">
+  <div class="abs intro-quote">
+    <p class="lead">“The primary purpose of food</p>
+    <p class="body">is to supply living organisms with energy and essential nutrients to survive, grow, and stay healthy. For humans, food also serves social, cultural, and emotional roles.”</p>
+  </div>
 
   <p class="abs below mission"><span>Wherever people put their minds and bodies on the line at work, nutritious, minimally processed food should be available.</span></p>
 
@@ -92,11 +103,11 @@
 <script>
   (function () {
     var page = document.getElementById('page');
-    // Two screens on every device. Screen 1 = logo + title centred. Screen 2 = the text, photos and
+    // Two screens on every device. Screen 1 = logo + trident figure and quote, centred. Screen 2 = the text, photos and
     // footer, zoomed so the whole block fits the screen height and centred.
     //   Desktop: never wider than ~65% of the screen, so there are wide side margins.
     //   Phone:   the photo grid fills the width with ~24px side margins.
-    var TITLE_H = 76;       // height of the title image in artboard px
+    var INTRO_H = { desktop: 527, phone: 1101 };  // height of the intro group (figure + quote) in artboard px
     var CONTENT_TOP = 568;  // top of the first photo row
     var CONTENT_H = 1389;   // first photo row down to "Made In Finland"
     var FIT_H = 1560;       // CONTENT_H plus breathing room above and below
@@ -116,7 +127,7 @@
       var s = Math.min(vw / v.maxW, vh / FIT_H);
       var x0 = CENTER_X - vw / (2 * s);   // artboard x shown at the left edge of the screen
       var screenH = vh / s;               // one screen height in artboard px
-      page.style.setProperty('--title-top', Math.round((screenH - TITLE_H) / 2) + 'px');
+      page.style.setProperty('--intro-top', Math.round((screenH - (phone ? INTRO_H.phone : INTRO_H.desktop)) / 2) + 'px');
       // Centre the content block vertically within the second screen
       var shift = Math.round(screenH + (screenH - CONTENT_H) / 2 - CONTENT_TOP);
       page.style.setProperty('--shift', shift + 'px');
