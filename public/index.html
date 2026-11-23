@@ -23,9 +23,12 @@
   /* Desktop zoom depends on the screen (see the script); the script sets these so the logo
      always sits ~31px from the top-left corner at the same on-screen size */
   .logo  { left: var(--logo-left, -173px); top: var(--logo-top, 52px); width: var(--logo-w, 112px); }
-  /* Intro: trident figure + quote. Desktop: side by side (357 + 69 gap + 521 = 946px) centred on the
-     grid/screen centre (x 697), the quote vertically centred on the figure (422px tall).
-     --intro-top (set by the script) is the top of the figure. */
+  /* Screen 1: the "humanity-focused nutrition" title alone, centred (--title-top is set by the script) */
+  .title { left: 455px; width: 495px; top: var(--title-top, 274px); }
+
+  /* Trident figure + quote, sitting on top of the rest of the page (scrolled to, like the photos).
+     Desktop: side by side (357 + 69 gap + 521 = 946px) centred on the grid centre (x 697), the quote
+     vertically centred on the figure (422px tall). --intro-top (set by the script) is the top of the figure. */
   .figure { left: 224px; width: 357px; top: var(--intro-top, 300px); }
   .intro-quote { left: 650px; width: 521px; top: calc(var(--intro-top, 300px) + 122.4px); }
   .intro-quote .lead { font-size: 43.44px; line-height: 48px; white-space: nowrap; margin-bottom: 4.8px; }
@@ -84,8 +87,10 @@
 <body>
 <div class="page" id="page">
   <img class="abs logo" src="img/sm.png" alt="Simpleman">
-  <img class="abs figure" src="img/poseidon.jpg" alt="">
-  <div class="abs intro-quote">
+  <img class="abs title" src="img/title.png" alt="humanity-focused nutrition">
+
+  <img class="abs below figure" src="img/poseidon.jpg" alt="">
+  <div class="abs below intro-quote">
     <p class="lead">“The primary purpose of food</p>
     <p class="body">is to supply living organisms with energy and essential nutrients to survive, grow, and stay healthy. For humans, food also serves social, cultural, and emotional roles.”</p>
   </div>
@@ -113,11 +118,15 @@
 <script>
   (function () {
     var page = document.getElementById('page');
-    // Two screens on every device. Screen 1 = logo + trident figure and quote, centred. Screen 2 = the text, photos and
-    // footer, zoomed so the whole block fits the screen height and centred.
+    // Screen 1 = logo + the "humanity-focused nutrition" title, centred. Below it: the trident figure and quote,
+    // then the text, photos and footer. The zoom fits the photos-to-footer block to the screen height; the whole
+    // section is centred in screen 2 when it fits, otherwise it simply scrolls on.
     //   Desktop: never wider than ~65% of the screen, so there are wide side margins.
     //   Phone:   the photo grid fills the width with ~24px side margins.
-    var INTRO_H = { desktop: 422, phone: 887 };  // height of the intro group (figure + quote) in artboard px
+    var TITLE_H = 76;       // height of the title image in artboard px
+    var INTRO_H = { desktop: 422, phone: 887 };  // height of the figure + quote group in artboard px
+    var GAP = 130;          // space between the quote group and the first photo row
+    var PAD = 110;          // space above and below the section when it is taller than a screen
     var CONTENT_TOP = 568;  // top of the first photo row
     var CONTENT_H = 1389;   // first photo row down to "Made In Finland"
     var FIT_H = 1560;       // CONTENT_H plus breathing room above and below
@@ -137,15 +146,19 @@
       var s = Math.min(vw / v.maxW, vh / FIT_H);
       var x0 = CENTER_X - vw / (2 * s);   // artboard x shown at the left edge of the screen
       var screenH = vh / s;               // one screen height in artboard px
-      page.style.setProperty('--intro-top', Math.round((screenH - (phone ? INTRO_H.phone : INTRO_H.desktop)) / 2) + 'px');
-      // Centre the content block vertically within the second screen
-      var shift = Math.round(screenH + (screenH - CONTENT_H) / 2 - CONTENT_TOP);
+      page.style.setProperty('--title-top', Math.round((screenH - TITLE_H) / 2) + 'px');
+      // The figure + quote group sits GAP above the first photo row and moves with it
+      var introH = phone ? INTRO_H.phone : INTRO_H.desktop;
+      var secTop = CONTENT_TOP - GAP - introH, secH = introH + GAP + CONTENT_H;
+      page.style.setProperty('--intro-top', secTop + 'px');
+      var pad = Math.max(PAD, (screenH - secH) / 2);
+      var shift = Math.round(screenH + pad - secTop);
       page.style.setProperty('--shift', shift + 'px');
       page.style.setProperty('--logo-left', (x0 + v.logo.left / s) + 'px');
       page.style.setProperty('--logo-top', (v.logo.top / s) + 'px');
       page.style.setProperty('--logo-w', (v.logo.w / s) + 'px');
       page.style.transform = 'scale(' + s + ') translateX(' + (-x0) + 'px)';
-      document.body.style.height = (2 * vh) + 'px';
+      document.body.style.height = Math.round((screenH + secH + 2 * pad) * s) + 'px';
     }
     window.addEventListener('resize', fit);
     fit();
