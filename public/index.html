@@ -74,12 +74,11 @@
   .page.reveal .below { opacity: 0; transition: opacity 0.9s ease; }
   .page.reveal .below.in { opacity: 1; }
 
-  /* Phone intro: figure beside the quote like on desktop (400 + 50 gap + 740 = 1190px, centred on x 697),
-     text scaled up 1.42x so it stays readable; the quote is vertically centred on the figure (473px tall) */
-  .m .figure { left: 102px; width: 400px; }
-  .m .intro-quote { left: 552px; width: 740px; top: calc(var(--intro-top, 300px) + 91px); }
-  .m .intro-quote .lead { font-size: 61.7px; line-height: 68.2px; margin-bottom: 6.8px; }
-  .m .intro-quote .body { font-size: 36.1px; line-height: 54.2px; }
+  /* Phone intro: figure centred above the quote (figure 492px tall + 56 gap), larger text */
+  .m .figure { left: 489px; width: 416px; }
+  .m .intro-quote { left: 257px; width: 880px; top: calc(var(--intro-top, 300px) + 548px); }
+  .m .intro-quote .lead { font-size: 73.44px; line-height: 83.2px; margin-bottom: 6.4px; }
+  .m .intro-quote .body { font-size: 41.6px; line-height: 62.4px; }
 </style>
 </head>
 <body>
@@ -118,7 +117,7 @@
     // footer, zoomed so the whole block fits the screen height and centred.
     //   Desktop: never wider than ~65% of the screen, so there are wide side margins.
     //   Phone:   the photo grid fills the width with ~24px side margins.
-    var INTRO_H = { desktop: 422, phone: 473 };  // height of the intro group (figure + quote) in artboard px
+    var INTRO_H = { desktop: 422, phone: 887 };  // height of the intro group (figure + quote) in artboard px
     var CONTENT_TOP = 568;  // top of the first photo row
     var CONTENT_H = 1389;   // first photo row down to "Made In Finland"
     var FIT_H = 1560;       // CONTENT_H plus breathing room above and below
