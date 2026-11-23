@@ -23,13 +23,13 @@
   /* Desktop zoom depends on the screen (see the script); the script sets these so the logo
      always sits ~31px from the top-left corner at the same on-screen size */
   .logo  { left: var(--logo-left, -173px); top: var(--logo-top, 52px); width: var(--logo-w, 112px); }
-  /* Intro: trident figure + quote. Desktop: side by side (446 + 86 gap + 651 = 1183px) centred on the
-     grid/screen centre (x 697), the quote vertically centred on the figure (527px tall).
+  /* Intro: trident figure + quote. Desktop: side by side (357 + 69 gap + 521 = 946px) centred on the
+     grid/screen centre (x 697), the quote vertically centred on the figure (422px tall).
      --intro-top (set by the script) is the top of the figure. */
-  .figure { left: 106px; width: 446px; top: var(--intro-top, 300px); }
-  .intro-quote { left: 637px; width: 651px; top: calc(var(--intro-top, 300px) + 153px); }
-  .intro-quote .lead { font-size: 54.3px; line-height: 60px; white-space: nowrap; margin-bottom: 6px; }
-  .intro-quote .body { font-size: 31.8px; line-height: 47.75px; text-align: justify; }
+  .figure { left: 224px; width: 357px; top: var(--intro-top, 300px); }
+  .intro-quote { left: 650px; width: 521px; top: calc(var(--intro-top, 300px) + 122.4px); }
+  .intro-quote .lead { font-size: 43.44px; line-height: 48px; white-space: nowrap; margin-bottom: 4.8px; }
+  .intro-quote .body { font-size: 25.44px; line-height: 38.2px; text-align: justify; }
 
   /* Newspaper-style column: left-aligned text with a drop cap spanning three lines */
   .mission { left: 194px; top: 625.4px; font-size: 29.1px; line-height: 32px; }
@@ -65,16 +65,16 @@
   .page.reveal .below { opacity: 0; transition: opacity 0.9s ease; }
   .page.reveal .below.in { opacity: 1; }
 
-  /* Phone intro: figure centred above the quote (figure 615px tall + 70 gap), larger text */
-  .m .figure { left: 437px; width: 520px; }
-  .m .intro-quote { left: 147px; width: 1100px; top: calc(var(--intro-top, 300px) + 685px); }
-  .m .intro-quote .lead { font-size: 91.8px; line-height: 104px; margin-bottom: 8px; }
-  .m .intro-quote .body { font-size: 52px; line-height: 78px; }
+  /* Phone intro: figure centred above the quote (figure 492px tall + 56 gap), larger text */
+  .m .figure { left: 489px; width: 416px; }
+  .m .intro-quote { left: 257px; width: 880px; top: calc(var(--intro-top, 300px) + 548px); }
+  .m .intro-quote .lead { font-size: 73.44px; line-height: 83.2px; margin-bottom: 6.4px; }
+  .m .intro-quote .body { font-size: 41.6px; line-height: 62.4px; }
 </style>
 </head>
 <body>
 <div class="page" id="page">
-  <img class="abs logo" src="img/logo.png" alt="Simpleman">
+  <img class="abs logo" src="img/wordmark.png" alt="Simpleman">
   <img class="abs figure" src="img/poseidon.jpg" alt="">
   <div class="abs intro-quote">
     <p class="lead">“The primary purpose of food</p>
@@ -107,13 +107,13 @@
     // footer, zoomed so the whole block fits the screen height and centred.
     //   Desktop: never wider than ~65% of the screen, so there are wide side margins.
     //   Phone:   the photo grid fills the width with ~24px side margins.
-    var INTRO_H = { desktop: 527, phone: 1109 };  // height of the intro group (figure + quote) in artboard px
+    var INTRO_H = { desktop: 422, phone: 887 };  // height of the intro group (figure + quote) in artboard px
     var CONTENT_TOP = 568;  // top of the first photo row
     var CONTENT_H = 1389;   // first photo row down to "Made In Finland"
     var FIT_H = 1560;       // CONTENT_H plus breathing room above and below
     var CENTER_X = 697;     // horizontal centre of the photo grid
-    var DESKTOP = { maxW: 1820, logo: { left: 31, top: 41, w: 88 } };
-    var PHONE   = { maxW: 1362, logo: { left: 24, top: 24, w: 24.5 } };
+    var DESKTOP = { maxW: 1820, logo: { left: 45, top: 41, w: 90 } };
+    var PHONE   = { maxW: 1362, logo: { left: 24, top: 24, w: 56 } };
     var lastW = 0, lastH = 0;
     function fit() {
       var vw = document.documentElement.clientWidth, vh = window.innerHeight;
