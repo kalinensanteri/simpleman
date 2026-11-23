@@ -27,8 +27,8 @@
      grid/screen centre (x 697), the quote vertically centred on the figure (527px tall).
      --intro-top (set by the script) is the top of the figure. */
   .figure { left: 106px; width: 446px; top: var(--intro-top, 300px); }
-  .intro-quote { left: 637px; width: 651px; top: calc(var(--intro-top, 300px) + 156px); }
-  .intro-quote .lead { font-size: 54.3px; line-height: 60px; white-space: nowrap; }
+  .intro-quote { left: 637px; width: 651px; top: calc(var(--intro-top, 300px) + 153px); }
+  .intro-quote .lead { font-size: 54.3px; line-height: 60px; white-space: nowrap; margin-bottom: 6px; }
   .intro-quote .body { font-size: 31.8px; line-height: 47.75px; text-align: justify; }
 
   /* Newspaper-style column: left-aligned text with a drop cap spanning three lines */
@@ -68,7 +68,7 @@
   /* Phone intro: figure centred above the quote (figure 615px tall + 70 gap), larger text */
   .m .figure { left: 437px; width: 520px; }
   .m .intro-quote { left: 147px; width: 1100px; top: calc(var(--intro-top, 300px) + 685px); }
-  .m .intro-quote .lead { font-size: 91.8px; line-height: 104px; }
+  .m .intro-quote .lead { font-size: 91.8px; line-height: 104px; margin-bottom: 8px; }
   .m .intro-quote .body { font-size: 52px; line-height: 78px; }
 </style>
 </head>
@@ -107,7 +107,7 @@
     // footer, zoomed so the whole block fits the screen height and centred.
     //   Desktop: never wider than ~65% of the screen, so there are wide side margins.
     //   Phone:   the photo grid fills the width with ~24px side margins.
-    var INTRO_H = { desktop: 527, phone: 1101 };  // height of the intro group (figure + quote) in artboard px
+    var INTRO_H = { desktop: 527, phone: 1109 };  // height of the intro group (figure + quote) in artboard px
     var CONTENT_TOP = 568;  // top of the first photo row
     var CONTENT_H = 1389;   // first photo row down to "Made In Finland"
     var FIT_H = 1560;       // CONTENT_H plus breathing room above and below
