@@ -23,9 +23,7 @@
   /* Desktop zoom depends on the screen (see the script); the script sets these so the logo
      always sits ~31px from the top-left corner at the same on-screen size */
   .logo  { left: var(--logo-left, -173px); top: var(--logo-top, 52px); width: var(--logo-w, 112px); }
-  /* Screen 1: the hat logo (as on the contact page) above the "humanity-focused nutrition" title, the pair
-     centred on screen (--title-top is set by the script; the hat is 69px tall, 28px above the title) */
-  .hat   { left: 657.5px; width: 90px; top: calc(var(--title-top, 274px) - 97px); }
+  /* Screen 1: the "humanity-focused nutrition" title alone, centred (--title-top is set by the script) */
   .title { left: 455px; width: 495px; top: var(--title-top, 274px); }
 
   /* Newspaper-style column: left-aligned text with a drop cap spanning three lines */
@@ -76,7 +74,6 @@
 <body>
 <div class="page" id="page">
   <img class="abs logo" src="img/sm.png" alt="Simpleman">
-  <img class="abs hat" src="img/hat.png" alt="">
   <img class="abs title" src="img/title.png" alt="humanity-focused nutrition">
 
   <p class="abs below mission"><span>Wherever people put their minds and bodies on the line at work, nutritious, minimally processed food should be available.</span></p>
@@ -107,7 +104,6 @@
     //   Desktop: never wider than ~65% of the screen, so there are wide side margins.
     //   Phone:   the photo grid fills the width with ~24px side margins.
     var TITLE_H = 76;       // height of the title image in artboard px
-    var HAT_H = 97;         // hat logo height plus the gap above the title
     var CONTENT_TOP = 568;  // top of the first photo row
     var CONTENT_H = 1389;   // first photo row down to "Made In Finland"
     var FIT_H = 1560;       // CONTENT_H plus breathing room above and below
@@ -127,7 +123,7 @@
       var s = Math.min(vw / v.maxW, vh / FIT_H);
       var x0 = CENTER_X - vw / (2 * s);   // artboard x shown at the left edge of the screen
       var screenH = vh / s;               // one screen height in artboard px
-      page.style.setProperty('--title-top', Math.round((screenH - TITLE_H - HAT_H) / 2 + HAT_H) + 'px');
+      page.style.setProperty('--title-top', Math.round((screenH - TITLE_H) / 2) + 'px');
       // Centre the content block vertically within the second screen
       var shift = Math.round(screenH + (screenH - CONTENT_H) / 2 - CONTENT_TOP);
       page.style.setProperty('--shift', shift + 'px');
