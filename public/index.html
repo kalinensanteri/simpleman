@@ -23,8 +23,9 @@
   /* Desktop zoom depends on the screen (see the script); the script sets these so the logo
      always sits ~31px from the top-left corner at the same on-screen size */
   .logo  { left: var(--logo-left, -173px); top: var(--logo-top, 52px); width: var(--logo-w, 112px); }
-  /* Screen 1: the "humanity-focused nutrition" title alone, centred (--title-top is set by the script) */
-  .title { left: 455px; width: 495px; top: var(--title-top, 274px); }
+  /* Screen 1: the opening line alone, centred on the grid centre line (x 697); --title-top is set by the script */
+  .title { left: 0; width: 1394px; top: var(--title-top, 274px); text-align: center; font-size: 40px; line-height: 48px; white-space: nowrap; }
+  .m .title { left: 97px; width: 1200px; white-space: normal; font-size: 64px; line-height: 76px; }
 
   /* Newspaper-style column: left-aligned text with a drop cap spanning three lines */
   .mission { left: 194px; top: 625.4px; font-size: 29.1px; line-height: 32px; }
@@ -74,7 +75,7 @@
 <body>
 <div class="page" id="page">
   <img class="abs logo" src="img/hat.png" alt="Simpleman">
-  <img class="abs title" src="img/title.png" alt="humanity-focused nutrition">
+  <p class="abs title">Once upon a time, there was a man, who liked his things... simple.</p>
 
   <p class="abs below mission"><span>Wherever people put their minds and bodies on the line at work, nutritious, minimally processed food should be available.</span></p>
 
@@ -99,11 +100,11 @@
 <script>
   (function () {
     var page = document.getElementById('page');
-    // Two screens on every device. Screen 1 = logo + the "humanity-focused nutrition" title, centred. Screen 2 = the
+    var title = page.querySelector('.title');
+    // Two screens on every device. Screen 1 = logo + the opening line, centred. Screen 2 = the
     // text, photos and footer, zoomed so the whole block fits the screen height and centred.
     //   Desktop: never wider than ~65% of the screen, so there are wide side margins.
     //   Phone:   the photo grid fills the width with ~24px side margins.
-    var TITLE_H = 76;       // height of the title image in artboard px
     var CONTENT_TOP = 568;  // top of the first photo row
     var CONTENT_H = 1389;   // first photo row down to "Made In Finland"
     var FIT_H = 1560;       // CONTENT_H plus breathing room above and below
@@ -123,7 +124,7 @@
       var s = Math.min(vw / v.maxW, vh / FIT_H);
       var x0 = CENTER_X - vw / (2 * s);   // artboard x shown at the left edge of the screen
       var screenH = vh / s;               // one screen height in artboard px
-      page.style.setProperty('--title-top', Math.round((screenH - TITLE_H) / 2) + 'px');
+      page.style.setProperty('--title-top', Math.round((screenH - title.offsetHeight) / 2) + 'px');
       // Centre the content block vertically within the second screen
       var shift = Math.round(screenH + (screenH - CONTENT_H) / 2 - CONTENT_TOP);
       page.style.setProperty('--shift', shift + 'px');
