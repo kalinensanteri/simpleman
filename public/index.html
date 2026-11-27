@@ -30,29 +30,25 @@
   /* Artboard 577: the row of walking figures, centred above the photo grid (x 697), 60px above the first row */
   .figures { left: 247px; top: 260.5px; width: 900px; }
 
-  /* Newspaper-style column: left-aligned text with a drop cap spanning three lines */
-  .mission { left: 194px; top: 625.4px; font-size: 29.1px; line-height: 32px; }
-  .mission span { display: block; width: 426px; text-align: left; }
-  .mission span::first-letter { float: left; font-size: 126px; line-height: 95px; margin: 0 14px 0 -2px; }
-
   .tile { border: 2px solid #707070; object-fit: cover; }
-  .meal-a { left: 733px;  top: 570px; width: 243px; height: 243px; }
+  /* Row 1: the four meal photos in one line; row 2: nutrition label (left) and ingredients (right) */
+  .meal-c { left: 103px;  top: 568px; width: 243px; height: 243px; }
+  .meal-d { left: 418px;  top: 568px; width: 243px; height: 243px; }
+  .meal-a { left: 733px;  top: 568px; width: 243px; height: 243px; }
   .meal-b { left: 1048px; top: 568px; width: 243px; height: 243px; }
-  .meal-c { left: 103px;  top: 890px; width: 243px; height: 243px; }
-  .meal-d { left: 418px;  top: 888px; width: 243px; height: 243px; }
   .ingredients { left: 733px; top: 888px; width: 558px; height: 347px; }
 
-  /* "join waitlist" button in the space under the ingredients photo, where the faces drawing was.
+  /* "join waitlist" button centred under the grid.
      A full-width wrapper centres it (the .below fade/shift already uses transform). */
-  .joinwrap { left: 733px; width: 558px; top: 1395.5px; text-align: center; }
+  .joinwrap { left: 103px; width: 1188px; top: 1315px; text-align: center; }
   .joinwrap a { display: inline-block; padding: 0 1.15em; height: 55px; border: 2px solid #d8d8d8; background: #fff;
     font: 27.5px/51px 'Times New Roman', Tinos, Times, serif; color: #111; text-decoration: none; white-space: nowrap; }
   .joinwrap a:hover { border-color: #a0a0a0; }
   /* Phone: the layout is shrunk to fit, so make the button bigger to stay readable and tappable */
-  .m .joinwrap { top: 1373px; }
+  .m .joinwrap { top: 1300px; }
   .m .joinwrap a { height: 100px; font-size: 48px; line-height: 96px; border-width: 3px; }
 
-  .nutrition { left: 103px; top: 1211px; width: 558px; height: 347px; background: #e8e8e8; border: 2px solid #5b5b5b; }
+  .nutrition { left: 103px; top: 888px; width: 558px; height: 347px; background: #e8e8e8; border: 2px solid #5b5b5b; }
   .label  { left: 83px; top: 62px; width: 387px; height: 219px; background: #fff; border: 2px solid #747474; }
   .macros { left: 66.5px; top: 46.6px; font: 23.4px/28px 'Times New Roman', Tinos, Times, serif; color: #000; }
   .card   { left: 184px; top: 42.5px; width: 129.5px; }
@@ -60,11 +56,11 @@
 
   /* Footer: "contact us", the flower drawing and "pursuit of real" sit on one line */
   /* Footer row and "Made In Finland" share the photo grid's centre line (x 697) */
-  .footer { left: 0; top: 1879px; width: 1394px; height: 40px; display: flex; justify-content: center; align-items: flex-end; }
+  .footer { left: 0; top: 1560px; width: 1394px; height: 40px; display: flex; justify-content: center; align-items: flex-end; }
   .footer a { color: #111; text-decoration: none; font-size: 27.5px; line-height: 27.5px; white-space: nowrap; }
   .footer a:hover { text-decoration: underline; }
   .footer img { display: block; width: 39.5px; margin: 0 24.5px 2px 13.5px; }
-  .made { left: 0; top: 1942.7px; width: 1394px; text-align: center; font: 18.4px/18.4px 'Times New Roman', Tinos, Times, serif; color: #8a8a8a; }
+  .made { left: 0; top: 1623.7px; width: 1394px; text-align: center; font: 18.4px/18.4px 'Times New Roman', Tinos, Times, serif; color: #8a8a8a; }
 
   /* Intro (desktop and phone): the first screen shows only the logo and the title (centred
      vertically); everything marked .below is pushed under the fold by --shift and fades in
@@ -82,12 +78,10 @@
 
   <img class="abs below figures" src="img/figures.png" alt="">
 
-  <p class="abs below mission"><span>Wherever people put their minds and bodies on the line at work, nutritious, minimally processed food should be available.</span></p>
-
-  <img class="abs below tile grid meal-a" src="img/meal3.jpg" alt="Beef bowl">
-  <img class="abs below tile grid meal-b" src="img/meal4.jpg" alt="Beef bowl from above">
   <img class="abs below tile grid meal-c" src="img/meal1.jpg" alt="Chicken bowl">
   <img class="abs below tile grid meal-d" src="img/meal2.jpg" alt="Chicken bowl from above">
+  <img class="abs below tile grid meal-a" src="img/meal3.jpg" alt="Beef bowl">
+  <img class="abs below tile grid meal-b" src="img/meal4.jpg" alt="Beef bowl from above">
   <img class="abs below tile grid ingredients" src="img/ingredients.jpg" alt="Raw ingredients">
 
   <div class="abs below grid nutrition">
@@ -111,8 +105,8 @@
     //   Desktop: never wider than ~65% of the screen, so there are wide side margins.
     //   Phone:   the photo grid fills the width with ~24px side margins.
     var CONTENT_TOP = 261;  // top of the figures drawing above the first photo row
-    var CONTENT_H = 1696;   // figures drawing down to "Made In Finland"
-    var FIT_H = 1867;       // CONTENT_H plus breathing room above and below
+    var CONTENT_H = 1377;   // figures drawing down to "Made In Finland"
+    var FIT_H = 1548;       // CONTENT_H plus breathing room above and below
     var CENTER_X = 697;     // horizontal centre of the photo grid
     var DESKTOP = { maxW: 1820, logo: { left: 36, top: 32, w: 52 } };
     var PHONE   = { maxW: 1362, logo: { left: 24, top: 24, w: 40 } };
