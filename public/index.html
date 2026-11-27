@@ -27,6 +27,9 @@
   .title { left: 0; width: 1394px; top: var(--title-top, 274px); text-align: center; font-size: 40px; line-height: 48px; white-space: nowrap; }
   .m .title { left: 97px; width: 1200px; white-space: normal; font-size: 64px; line-height: 76px; }
 
+  /* Artboard 577: the row of walking figures, centred above the photo grid (x 697), 60px above the first row */
+  .figures { left: 247px; top: 260.5px; width: 900px; }
+
   /* Newspaper-style column: left-aligned text with a drop cap spanning three lines */
   .mission { left: 194px; top: 625.4px; font-size: 29.1px; line-height: 32px; }
   .mission span { display: block; width: 426px; text-align: left; }
@@ -77,6 +80,8 @@
   <img class="abs logo" src="img/hat.png" alt="Simpleman">
   <p class="abs title">Once upon a time, there was a man who preferred his things... simple.</p>
 
+  <img class="abs below figures" src="img/figures.png" alt="">
+
   <p class="abs below mission"><span>Wherever people put their minds and bodies on the line at work, nutritious, minimally processed food should be available.</span></p>
 
   <img class="abs below tile grid meal-a" src="img/meal3.jpg" alt="Beef bowl">
@@ -105,9 +110,9 @@
     // text, photos and footer, zoomed so the whole block fits the screen height and centred.
     //   Desktop: never wider than ~65% of the screen, so there are wide side margins.
     //   Phone:   the photo grid fills the width with ~24px side margins.
-    var CONTENT_TOP = 568;  // top of the first photo row
-    var CONTENT_H = 1389;   // first photo row down to "Made In Finland"
-    var FIT_H = 1560;       // CONTENT_H plus breathing room above and below
+    var CONTENT_TOP = 261;  // top of the figures drawing above the first photo row
+    var CONTENT_H = 1696;   // figures drawing down to "Made In Finland"
+    var FIT_H = 1867;       // CONTENT_H plus breathing room above and below
     var CENTER_X = 697;     // horizontal centre of the photo grid
     var DESKTOP = { maxW: 1820, logo: { left: 36, top: 32, w: 52 } };
     var PHONE   = { maxW: 1362, logo: { left: 24, top: 24, w: 40 } };
